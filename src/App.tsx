@@ -24,7 +24,7 @@ function App() {
       <Curriculum />
       <WorkshopDetails />
       <FAQ />
-      <FinalCTA />
+      <FinalCTA onJoinClick={() => setIsModalOpen(true)} />
       <Footer />
       <SignupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>

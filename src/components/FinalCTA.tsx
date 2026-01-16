@@ -1,6 +1,10 @@
 import { Button } from './Button';
 
-export const FinalCTA = () => {
+interface FinalCTAProps {
+  onJoinClick: () => void;
+}
+
+export const FinalCTA = ({ onJoinClick }: FinalCTAProps) => {
   return (
     <section className="py-32 px-6 bg-beige-50">
       <div className="max-w-3xl mx-auto text-center">
@@ -12,11 +16,7 @@ export const FinalCTA = () => {
           In 28 days, you'll have the skills, systems, and portfolio to prove you can build online.
         </p>
 
-        <Button variant="primary">Join the Workshop</Button>
-
-        <p className="text-sm text-charcoal/50 mt-8">
-          Early cohort pricing available
-        </p>
+        <Button variant="primary" onClick={onJoinClick}>Join the Workshop</Button>
       </div>
     </section>
   );
