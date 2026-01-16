@@ -1,4 +1,5 @@
-import { Calendar } from 'lucide-react';
+import { useState } from 'react';
+import { Calendar, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface CurriculumDay {
   day: number;
@@ -46,8 +47,8 @@ const curriculum: CurriculumWeek[] = [
     ]
   },
   {
-    title: 'Week 2',
-    description: 'Building & Vibe Coding',
+    title: 'Weeks 2 & 3',
+    description: 'Vibe Coding',
     days: [
       {
         day: 6,
@@ -84,13 +85,7 @@ const curriculum: CurriculumWeek[] = [
       {
         day: 13,
         title: 'Generating a Business Dashboard'
-      }
-    ]
-  },
-  {
-    title: 'Week 3',
-    description: 'Systems, APIs & Products',
-    days: [
+      },
       {
         day: 14,
         title: 'Agentic Development'
@@ -112,8 +107,8 @@ const curriculum: CurriculumWeek[] = [
     ]
   },
   {
-    title: 'Week 3-4',
-    description: 'Media, Brand & Distribution',
+    title: 'Week 4',
+    description: 'Distribution & Automation',
     days: [
       {
         day: 18,
@@ -148,13 +143,7 @@ const curriculum: CurriculumWeek[] = [
       {
         day: 24,
         title: 'Build an Ad Campaign Featuring Yourself'
-      }
-    ]
-  },
-  {
-    title: 'Week 4',
-    description: 'Automation & Agents',
-    days: [
+      },
       {
         day: 25,
         title: 'AI Native Browsers',
@@ -192,6 +181,19 @@ const curriculum: CurriculumWeek[] = [
 ];
 
 export const Curriculum = () => {
+  // First week (index 0) is open by default, others are closed
+  const [openWeeks, setOpenWeeks] = useState<Set<number>>(new Set([0]));
+
+  const toggleWeek = (weekIndex: number) => {
+    const newOpenWeeks = new Set(openWeeks);
+    if (newOpenWeeks.has(weekIndex)) {
+      newOpenWeeks.delete(weekIndex);
+    } else {
+      newOpenWeeks.add(weekIndex);
+    }
+    setOpenWeeks(newOpenWeeks);
+  };
+
   return (
     <section id="curriculum" className="py-24 px-6 bg-warmWhite">
       <div className="max-w-7xl mx-auto">
@@ -210,17 +212,30 @@ export const Curriculum = () => {
         </div>
 
         <div className="space-y-10">
-          {curriculum.map((week, weekIndex) => (
-            <div key={weekIndex} className="bg-beige-50 rounded-2xl border border-beige-200 overflow-hidden">
-              <div className="bg-gradient-to-r from-warmOrange-500 to-warmOrange-600 px-6 py-4">
-                <div className="flex items-center gap-3 text-white">
-                  <h3 className="text-xl font-bold">{week.title}</h3>
-                  <span className="opacity-70">•</span>
-                  <p className="text-white/90 font-medium">{week.description}</p>
-                </div>
-              </div>
+          {curriculum.map((week, weekIndex) => {
+            const isOpen = openWeeks.has(weekIndex);
+            return (
+              <div key={weekIndex} className="bg-beige-50 rounded-2xl border border-beige-200 overflow-hidden">
+                <button
+                  onClick={() => toggleWeek(weekIndex)}
+                  className="w-full bg-gradient-to-r from-warmOrange-500 to-warmOrange-600 px-6 py-4 hover:brightness-90 transition-all"
+                >
+                  <div className="flex items-center justify-between text-white">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-xl font-bold">{week.title}</h3>
+                      <span className="opacity-70">•</span>
+                      <p className="text-white/90 font-medium">{week.description}</p>
+                    </div>
+                    {isOpen ? (
+                      <ChevronUp className="w-5 h-5 flex-shrink-0" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5 flex-shrink-0" />
+                    )}
+                  </div>
+                </button>
 
-              <div className="overflow-x-auto">
+                {isOpen && (
+                  <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="bg-beige-100 border-b border-beige-200">
@@ -233,7 +248,7 @@ export const Curriculum = () => {
                     {week.days.map((day, dayIndex) => (
                       <tr
                         key={dayIndex}
-                        className="border-b border-beige-200 hover:bg-warmWhite transition-colors"
+                        className="border-b border-beige-200 transition-colors"
                       >
                         <td className="px-6 py-5">
                           <div className="w-10 h-10 bg-gradient-to-br from-warmOrange-400 to-warmOrange-600 rounded-lg flex items-center justify-center shadow-sm">
@@ -266,9 +281,11 @@ export const Curriculum = () => {
                     ))}
                   </tbody>
                 </table>
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-16 text-center p-8 bg-gradient-to-br from-warmOrange-500/5 to-warmOrange-600/5 rounded-2xl border border-warmOrange-400/20">

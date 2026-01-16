@@ -6,6 +6,7 @@ import { WhoItsFor } from './components/WhoItsFor';
 import { HowItWorks } from './components/HowItWorks';
 import { Curriculum } from './components/Curriculum';
 import { WorkshopDetails } from './components/WorkshopDetails';
+import { AboutInstructor } from './components/AboutInstructor';
 import { FAQ } from './components/FAQ';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
@@ -23,6 +24,7 @@ function App() {
       <HowItWorks />
       <Curriculum />
       <WorkshopDetails />
+      <AboutInstructor />
       <FAQ />
       <FinalCTA onJoinClick={() => setIsModalOpen(true)} />
       <Footer />
