@@ -24,8 +24,8 @@ function App() {
       <HowItWorks />
       <Curriculum />
       <WorkshopDetails />
-      <AboutInstructor />
       <FAQ />
+      <AboutInstructor />
       <FinalCTA onJoinClick={() => setIsModalOpen(true)} />
       <Footer />
       <SignupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
