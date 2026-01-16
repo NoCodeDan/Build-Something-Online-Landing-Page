@@ -18,6 +18,14 @@ export default {
           500: '#DB6B3F',
           600: '#C85E37',
         },
+        // shadcn-compatible tokens
+        background: '#FAFAF8',
+        foreground: '#1A1A1A',
+        muted: {
+          DEFAULT: '#F8F6F3',
+          foreground: '#1A1A1A',
+        },
+        border: '#E8E3D8',
       },
       spacing: {
         '1': '4px',

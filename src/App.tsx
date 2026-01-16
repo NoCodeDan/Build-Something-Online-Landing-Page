@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Hero } from './components/Hero';
+import { SponsorsBanner } from './components/SponsorsBanner';
 import { Outcomes } from './components/Outcomes';
 import { WhatYoullLearn } from './components/WhatYoullLearn';
 import { WhoItsFor } from './components/WhoItsFor';
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="min-h-screen bg-warmWhite">
       <Hero onJoinClick={() => setIsModalOpen(true)} />
+      <SponsorsBanner />
       <Outcomes />
       <WhatYoullLearn />
       <WhoItsFor />

@@ -1,4 +1,5 @@
 import { Calendar, Video, Clock, Package, PlayCircle, Users } from 'lucide-react';
+import DisplayCards from './ui/display-cards';
 
 const details = [
   {
@@ -44,7 +45,7 @@ export const WorkshopDetails = () => {
           <div className="w-16 h-1 bg-warmOrange-500 mx-auto mt-6"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {details.map((detail, index) => (
             <div
               key={index}
@@ -59,6 +60,13 @@ export const WorkshopDetails = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Display Cards Section */}
+        <div className="flex justify-center">
+          <div className="w-full max-w-4xl">
+            <DisplayCards />
+          </div>
         </div>
       </div>
     </section>
