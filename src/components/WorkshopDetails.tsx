@@ -35,7 +35,7 @@ const details = [
 
 export const WorkshopDetails = () => {
   return (
-    <section className="py-24 px-6 bg-beige-50">
+    <section id="workshop-details" className="py-24 px-6 bg-beige-50">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">

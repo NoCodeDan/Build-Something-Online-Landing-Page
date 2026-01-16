@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://buildsomethingonline.com/sitemap.xml
+Sitemap: https://www.buildsomethingonline.com/sitemap.xml

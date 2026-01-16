@@ -32,7 +32,7 @@ export const FAQ = () => {
   };
 
   return (
-    <section className="py-24 px-6 bg-warmWhite">
+    <section id="faq" className="py-24 px-6 bg-warmWhite">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">
