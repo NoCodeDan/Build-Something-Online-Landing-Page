@@ -219,6 +219,8 @@ export const Curriculum = () => {
                 <button
                   onClick={() => toggleWeek(weekIndex)}
                   className="w-full bg-gradient-to-r from-warmOrange-500 to-warmOrange-600 px-6 py-4 hover:brightness-90 transition-all"
+                  aria-label={`${isOpen ? 'Collapse' : 'Expand'} ${week.title} - ${week.description}`}
+                  aria-expanded={isOpen}
                 >
                   <div className="flex items-center justify-between text-white">
                     <div className="flex items-center gap-3">
