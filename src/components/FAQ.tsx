@@ -62,7 +62,7 @@ export const FAQ = () => {
               </button>
 
               {openIndex === index && (
-                <div className="px-6 pb-6">
+                <div className="px-6 pb-6 pt-4">
                   <p className="text-charcoal/70 leading-relaxed">
                     {faq.answer}
                   </p>

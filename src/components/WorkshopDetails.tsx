@@ -1,4 +1,4 @@
-import { Calendar, Video, Clock, Package, PlayCircle } from 'lucide-react';
+import { Calendar, Video, Clock, Package, PlayCircle, Users } from 'lucide-react';
 
 const details = [
   {
@@ -24,7 +24,12 @@ const details = [
   {
     icon: PlayCircle,
     label: 'Start date',
-    value: 'Rolling enrollment'
+    value: 'February 1st 2026'
+  },
+  {
+    icon: Users,
+    label: 'Community',
+    value: 'Access to private group and support'
   }
 ];
 
