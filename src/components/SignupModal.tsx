@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { X, Mail, User, Sparkles } from 'lucide-react';
+import { useMutation } from 'convex/react';
+import { api } from '../../convex/_generated/api';
 
 interface SignupModalProps {
   isOpen: boolean;
@@ -13,6 +15,8 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
 
+  const signup = useMutation(api.signups.create);
+
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -21,12 +25,10 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
     setIsSubmitting(true);
 
     try {
-      // For now, simulate success - will be replaced with Convex mutation after running npx convex dev
-      console.log('✅ Signup submitted:', { name: name.trim(), email: email.trim() });
-      console.info('ℹ️ Demo mode: Run "npx convex dev" to save signups to database.');
-      
-      // Simulate a delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await signup({
+        name: name.trim(),
+        email: email.trim(),
+      });
       
       setIsSuccess(true);
       setTimeout(() => {
