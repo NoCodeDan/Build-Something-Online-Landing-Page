@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import aiCuriousImg from '@/images/Target ICPs/man-coder-and-glasses-in-office-for-portrait-web-2026-01-09-10-23-10-utc (1).jpg';
 import careerFocusedImg from '@/images/Target ICPs/conference-speech-for-work-future-and-man-with-mi-2026-01-09-11-07-12-utc (1).jpg';
 import indieHackerImg from '@/images/Target ICPs/working-on-a-new-game-cropped-shot-of-a-young-pro-2026-01-09-11-45-23-utc (1).jpg';
@@ -43,9 +43,30 @@ const audiences = [
 
 export const WhoItsFor = () => {
   const [expandedCard, setExpandedCard] = useState(0);
+  const [mobileOpenCard, setMobileOpenCard] = useState<number | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const getCardWidth = (index: number) =>
     index === expandedCard ? '28rem' : '8rem';
+
+  // Close modal when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        setMobileOpenCard(null);
+      }
+    };
+
+    if (mobileOpenCard !== null) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileOpenCard]);
 
   return (
     <section className="py-20 md:py-28 bg-warmWhite overflow-hidden">
@@ -120,8 +141,9 @@ export const WhoItsFor = () => {
         {audiences.map((audience, idx) => (
           <div
             key={idx}
-            className="relative overflow-hidden rounded-2xl shadow-lg"
+            className="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
             style={{ height: '14rem' }}
+            onClick={() => setMobileOpenCard(idx)}
           >
             {/* Image */}
             <img
@@ -152,6 +174,44 @@ export const WhoItsFor = () => {
           </div>
         ))}
       </div>
+
+      {/* Mobile Modal/Overlay */}
+      {mobileOpenCard !== null && (
+        <div className="fixed inset-0 bg-charcoal/80 z-50 lg:hidden flex items-center justify-center p-6">
+          <div
+            ref={modalRef}
+            className="relative overflow-hidden rounded-2xl shadow-2xl w-full max-w-sm"
+            style={{ height: '20rem' }}
+          >
+            {/* Image */}
+            <img
+              className="w-full h-full object-cover"
+              src={audiences[mobileOpenCard].image}
+              alt={audiences[mobileOpenCard].title}
+              style={{
+                objectPosition: audiences[mobileOpenCard].title === 'Career Focused' ? '68% center' : 
+                               audiences[mobileOpenCard].title === 'Indie Hackers' ? '80% center' : 
+                               audiences[mobileOpenCard].title === 'You!' ? '32% center' : 
+                               'center center'
+              }}
+            />
+            
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-transparent" />
+            
+            {/* Content */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <h3 className="font-bold text-xl mb-2">{audiences[mobileOpenCard].title}</h3>
+              <p className="text-white/80 text-sm leading-relaxed">
+                {audiences[mobileOpenCard].subtitle}
+              </p>
+            </div>
+            
+            {/* Orange accent bar */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-warmOrange-500" />
+          </div>
+        </div>
+      )}
 
       {/* Bottom tagline */}
       <div className="max-w-6xl mx-auto px-6 mt-12 text-center">
