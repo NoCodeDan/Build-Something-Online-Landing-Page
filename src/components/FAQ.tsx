@@ -3,6 +3,10 @@ import { Plus, Minus } from 'lucide-react';
 
 const faqs = [
   {
+    question: 'How much does it cost to attend?',
+    answer: 'It\'s completely free! Just sign up and you\'ll begin receiving the series of videos through email starting February 1st. No credit card required, no hidden fees—just sign up and start learning.'
+  },
+  {
     question: 'Do I need technical experience?',
     answer: 'No. This workshop is designed for beginners. We\'ll guide you through every step with clear instructions, templates, and modern AI tools that handle the heavy lifting.'
   },
@@ -62,7 +66,7 @@ export const FAQ = () => {
               </button>
 
               {openIndex === index && (
-                <div className="px-6 pb-6">
+                <div className="px-6 pt-4 pb-6">
                   <p className="text-charcoal/70 leading-relaxed">
                     {faq.answer}
                   </p>
