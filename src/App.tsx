@@ -24,8 +24,8 @@ function App() {
       <Outcomes />
       <WhoItsFor />
       <Stats />
-      <WhatYoullLearn />
       <HowItWorks />
+      <WhatYoullLearn />
       <Curriculum />
       <AboutInstructor />
       <SprintDetails />
