@@ -21,13 +21,13 @@ function App() {
       <Hero onJoinClick={() => setIsModalOpen(true)} />
       <SponsorsBanner />
       <Outcomes />
-      <WhatYoullLearn />
       <WhoItsFor />
+      <WhatYoullLearn />
       <HowItWorks />
       <Curriculum />
+      <AboutInstructor />
       <SprintDetails />
       <FAQ />
-      <AboutInstructor />
       <FinalCTA onJoinClick={() => setIsModalOpen(true)} />
       <Footer />
       <SignupModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
