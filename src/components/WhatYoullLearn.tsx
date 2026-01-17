@@ -106,8 +106,11 @@ export const WhatYoullLearn = () => {
           <p className="text-2xl md:text-3xl font-bold text-charcoal mb-2">
             Skills that compound.
           </p>
+          <p className="text-charcoal/60 mb-2">
+            Every lesson, every project, builds on the last—creating a powerful, adaptable skillset.
+          </p>
           <p className="text-charcoal/60">
-            Everything you learn builds on the previous day—by Day 28, you'll have a complete AI-first toolkit.
+            You'll learn how to position yourself as the AI-first person on your team.
           </p>
         </div>
       </div>
