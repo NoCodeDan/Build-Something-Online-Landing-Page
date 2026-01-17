@@ -36,7 +36,7 @@ const audiences = [
 ];
 
 export const WhoItsFor = () => {
-  const [expandedCard, setExpandedCard] = useState(2);
+  const [expandedCard, setExpandedCard] = useState(0);
 
   const getCardWidth = (index: number) =>
     index === expandedCard ? '28rem' : '8rem';
