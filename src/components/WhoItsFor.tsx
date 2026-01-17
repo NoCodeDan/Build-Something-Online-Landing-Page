@@ -9,12 +9,12 @@ const audiences = [
     image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80',
   },
   {
-    title: 'Career Switcher / Upskiller',
+    title: 'Career Focused',
     subtitle: 'Ready to add AI-first skills to your professional toolkit',
     image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80',
   },
   {
-    title: 'Solo Builder/Indie Hacker',
+    title: 'Indie Hacker',
     subtitle: 'Shipping products and side projects with AI as your co-pilot',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
   },
