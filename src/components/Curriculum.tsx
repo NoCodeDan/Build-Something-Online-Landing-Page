@@ -16,7 +16,7 @@ interface CurriculumWeek {
 
 const curriculum: CurriculumWeek[] = [
   {
-    title: 'Week 1',
+    title: 'Phase 1',
     description: 'AI Foundations & Real-World Use',
     days: [
       {
@@ -47,7 +47,7 @@ const curriculum: CurriculumWeek[] = [
     ]
   },
   {
-    title: 'Weeks 2 & 3',
+    title: 'Phase 2',
     description: 'Vibe Coding',
     days: [
       {
@@ -107,7 +107,7 @@ const curriculum: CurriculumWeek[] = [
     ]
   },
   {
-    title: 'Week 4',
+    title: 'Phase 3',
     description: 'Distribution & Automation',
     days: [
       {
