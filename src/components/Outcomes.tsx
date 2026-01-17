@@ -36,15 +36,15 @@ const outcomes = [
 export const Outcomes = () => {
   return (
     <section className="py-16 md:py-24 bg-beige-50 overflow-hidden">
-      {/* Header - same container as WhoItsFor */}
-      <div className="max-w-6xl mx-auto px-6 mb-12">
+      {/* Header - centered */}
+      <div className="max-w-6xl mx-auto px-6 mb-12 text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">
           What You'll Build in 28 Days
         </h2>
         <p className="text-lg text-charcoal/70 mb-4">
           Real projects. Real skills. A portfolio that proves you can ship.
         </p>
-        <div className="w-16 h-1 bg-warmOrange-500"></div>
+        <div className="w-16 h-1 bg-warmOrange-500 mx-auto"></div>
       </div>
 
       {/* Grid - Desktop - matches WhoItsFor slider width exactly */}
