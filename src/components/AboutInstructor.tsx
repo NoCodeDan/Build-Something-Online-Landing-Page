@@ -20,7 +20,7 @@ export const AboutInstructor = () => {
               alt="No-Code Dan"
               className="w-full h-full object-cover"
               style={{ 
-                transform: 'scale(1.5) translate(0%, 12%)',
+                transform: 'scale(1.5) translate(0%, 17%)',
                 objectPosition: 'center top'
               }}
             />
