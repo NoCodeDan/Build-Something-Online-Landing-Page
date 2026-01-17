@@ -1,4 +1,5 @@
 import { Sparkles } from 'lucide-react';
+import profilePic from '@/images/NCDProfilePic.jpg';
 
 export const AboutInstructor = () => {
   return (
@@ -11,8 +12,21 @@ export const AboutInstructor = () => {
           <div className="w-16 h-1 bg-warmOrange-500 mx-auto mt-6"></div>
         </div>
 
-        <div className="bg-beige-50 rounded-2xl border border-beige-200 p-8 md:p-12">
-          <div className="mb-8">
+        <div className="bg-beige-50 rounded-2xl border border-beige-200 p-8 md:p-12 relative">
+          {/* Profile Picture - Top Right Corner */}
+          <div className="absolute top-8 right-8 md:top-12 md:right-12 w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-warmOrange-400/30 shadow-lg">
+            <img
+              src={profilePic}
+              alt="No-Code Dan"
+              className="w-full h-full object-cover"
+              style={{ 
+                transform: 'scale(1.5) translate(-2%, 12%)',
+                objectPosition: 'center top'
+              }}
+            />
+          </div>
+          
+          <div className="mb-8 pr-32 md:pr-40">
             <h3 className="text-3xl font-bold text-charcoal mb-4">No-Code Dan</h3>
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gradient-to-r from-warmOrange-400/20 via-warmOrange-500/20 to-warmOrange-600/20 rounded-full border border-warmOrange-400/30">
               <Sparkles className="w-4 h-4 text-warmOrange-500" />
