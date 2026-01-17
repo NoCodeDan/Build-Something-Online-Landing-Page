@@ -7,7 +7,7 @@ interface FinalCTAProps {
 export const FinalCTA = ({ onJoinClick }: FinalCTAProps) => {
   return (
     <section className="py-32 px-6 bg-beige-50">
-      <div className="max-w-6xl mx-auto text-center">
+      <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-6">
           Become AI-first by building something real.
         </h2>

@@ -3,7 +3,7 @@ import { Sparkles } from 'lucide-react';
 export const AboutInstructor = () => {
   return (
     <section id="about" className="py-24 px-6 bg-warmWhite">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">
             About the Instructor

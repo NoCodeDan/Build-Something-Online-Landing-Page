@@ -35,8 +35,8 @@ const outcomes = [
 
 export const Outcomes = () => {
   return (
-    <section className="py-16 md:py-24 bg-beige-50">
-      <div className="mx-auto max-w-6xl space-y-8 md:space-y-16 px-6">
+    <section className="py-16 md:py-24 px-6 bg-beige-50">
+      <div className="mx-auto max-w-5xl space-y-8 md:space-y-16">
         {/* Header */}
         <div className="relative z-10 mx-auto max-w-xl space-y-4 text-center md:space-y-6">
           <h2 className="text-balance text-4xl font-bold text-charcoal lg:text-5xl">
@@ -49,7 +49,7 @@ export const Outcomes = () => {
         </div>
 
         {/* Grid */}
-        <div className="relative mx-auto grid divide-x divide-y divide-beige-200 border border-beige-200 rounded-2xl bg-warmWhite overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
+        <div className="relative mx-auto grid max-w-6xl divide-x divide-y divide-beige-200 border border-beige-200 rounded-2xl bg-warmWhite overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
           {outcomes.map((outcome, index) => (
             <div 
               key={index} 
