@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { X, Mail, User, Sparkles } from 'lucide-react';
 import { useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';
+import { SprintBadge } from './SprintBadge';
 
 interface SignupModalProps {
   isOpen: boolean;
@@ -14,10 +15,9 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [participantNumber, setParticipantNumber] = useState<number | null>(null);
 
   const signup = useMutation(api.signups.create);
-
-  if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,18 +25,34 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
     setIsSubmitting(true);
 
     try {
-      await signup({
+      const result = await signup({
         name: name.trim(),
         email: email.trim(),
       });
       
+      console.log('Signup result:', result, 'Type:', typeof result);
+      
+      // The mutation returns the participant number directly as a number
+      let participantNum: number;
+      
+      if (typeof result === 'number') {
+        participantNum = result;
+      } else if (result && typeof result === 'object' && 'participantNumber' in result) {
+        participantNum = (result as any).participantNumber;
+      } else {
+        console.error('Unexpected result format:', result);
+        throw new Error('Failed to get participant number. Please try again.');
+      }
+      
+      if (typeof participantNum !== 'number' || isNaN(participantNum) || participantNum <= 0) {
+        console.error('Invalid participant number:', participantNum, 'Result:', result);
+        throw new Error('Failed to get participant number. Please try again.');
+      }
+      
+      console.log('Setting participant number:', participantNum);
+      setParticipantNumber(participantNum);
       setIsSuccess(true);
-      setTimeout(() => {
-        setIsSuccess(false);
-        setName('');
-        setEmail('');
-        onClose();
-      }, 2000);
+      // Don't auto-close - let user interact with badge
     } catch (err: any) {
       setError(err.message || 'Something went wrong. Please try again.');
       console.error('Signup error:', err);
@@ -50,6 +66,34 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
       onClose();
     }
   };
+
+  // If success, show badge modal instead
+  if (isSuccess) {
+    // Only show badge if we have a valid participant number
+    if (participantNumber === null || participantNumber === undefined) {
+      console.error('Participant number is missing:', participantNumber);
+      return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/60 backdrop-blur-md">
+          <div className="relative bg-warmWhite rounded-2xl shadow-2xl w-full max-w-md p-8 z-10">
+            <p className="text-red-600">Error: Participant number not received. Please try again.</p>
+            <button onClick={onClose} className="mt-4 px-4 py-2 bg-warmOrange-500 text-white rounded-lg">
+              Close
+            </button>
+          </div>
+        </div>
+      );
+    }
+    
+    return <SprintBadge name={name} participantNumber={participantNumber} onClose={() => {
+      setIsSuccess(false);
+      setParticipantNumber(null);
+      setName('');
+      setEmail('');
+      onClose();
+    }} />;
+  }
+
+  if (!isOpen) return null;
 
   return (
     <div
@@ -70,25 +114,13 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
           <X className="w-5 h-5" />
         </button>
 
-        {isSuccess ? (
-          /* Success state */
-          <div className="text-center py-8">
-            <div className="w-16 h-16 bg-warmOrange-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Sparkles className="w-8 h-8 text-warmOrange-500" />
-            </div>
-            <h3 className="text-2xl font-bold text-charcoal mb-2">You're in! 🎉</h3>
-            <p className="text-charcoal/70">
-              Check your email for daily lessons starting soon.
-            </p>
-          </div>
-        ) : (
-          /* Form */
+        {/* Form */}
           <>
             <div className="text-center mb-8">
               <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-gradient-to-r from-warmOrange-400/20 via-warmOrange-500/20 to-warmOrange-600/20 rounded-full border border-warmOrange-400/30">
                 <Sparkles className="w-4 h-4 text-warmOrange-500" />
                 <span className="text-sm font-semibold bg-gradient-to-r from-warmOrange-600 to-warmOrange-500 bg-clip-text text-transparent">
-                  Join the Workshop
+                  Join the Sprint
                 </span>
               </div>
               <h2 className="text-3xl font-bold text-charcoal mb-2">
@@ -153,12 +185,12 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    <span>Joining...</span>
+                    <span>Joining Sprint...</span>
                   </>
                 ) : (
                   <>
                     <Sparkles className="w-5 h-5" />
-                    <span>Join the Workshop</span>
+                    <span>Join the Sprint</span>
                   </>
                 )}
               </button>
@@ -168,7 +200,6 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
               </p>
             </form>
           </>
-        )}
       </div>
     </div>
   );

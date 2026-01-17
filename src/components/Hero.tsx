@@ -37,7 +37,7 @@ export const Hero = ({ onJoinClick }: HeroProps) => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <Button variant="primary" onClick={onJoinClick}>Join the Workshop</Button>
+          <Button variant="primary" onClick={onJoinClick}>Join the Sprint</Button>
           <Button 
             variant="secondary"
             onClick={() => {

@@ -16,7 +16,7 @@ export const FinalCTA = ({ onJoinClick }: FinalCTAProps) => {
           In 28 days, you'll have the skills, systems, and portfolio to prove you can build online.
         </p>
 
-        <Button variant="primary" onClick={onJoinClick}>Join the Workshop</Button>
+        <Button variant="primary" onClick={onJoinClick}>Join the Sprint</Button>
       </div>
     </section>
   );

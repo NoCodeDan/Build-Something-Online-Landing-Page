@@ -5,6 +5,9 @@ export default defineSchema({
   signups: defineTable({
     name: v.string(),
     email: v.string(),
+    participantNumber: v.number(),
     createdAt: v.number(),
-  }).index("by_email", ["email"]),
+  })
+    .index("by_email", ["email"])
+    .index("by_participant_number", ["participantNumber"]),
 });

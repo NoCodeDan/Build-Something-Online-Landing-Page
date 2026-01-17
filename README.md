@@ -1,6 +1,6 @@
 # Build Something Online - Landing Page
 
-A modern, responsive landing page for the "Build Something Online" 28-day AI-first workshop.
+A modern, responsive landing page for the "Build Something Online" 28-day AI-first sprint.
 
 ## Features
 
@@ -92,7 +92,7 @@ npm run dev
 - Who It's For
 - How It Works (3-step process)
 - Full 28-Day Curriculum
-- Workshop Details
+- Sprint Details
 - FAQ
 - Final CTA
 - Footer

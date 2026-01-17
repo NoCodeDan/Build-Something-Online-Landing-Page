@@ -17,13 +17,19 @@ export const create = mutation({
       throw new Error("This email is already registered");
     }
 
+    // Get the count of existing signups to generate next participant number
+    const allSignups = await ctx.db.query("signups").collect();
+    const participantNumber = allSignups.length + 1; // Start from 001
+
     // Create new signup
     const signupId = await ctx.db.insert("signups", {
       name: args.name,
       email: args.email,
+      participantNumber: participantNumber,
       createdAt: Date.now(),
     });
 
-    return signupId;
+    // Return the participant number explicitly
+    return participantNumber;
   },
 });

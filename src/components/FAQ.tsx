@@ -4,7 +4,7 @@ import { Plus, Minus } from 'lucide-react';
 const faqs = [
   {
     question: 'Do I need technical experience?',
-    answer: 'No. This workshop is designed for beginners. We\'ll guide you through every step with clear instructions, templates, and modern AI tools that handle the heavy lifting.'
+    answer: 'No. This sprint is designed for beginners. We\'ll guide you through every step with clear instructions, templates, and modern AI tools that handle the heavy lifting.'
   },
   {
     question: 'What tools will I use?',
@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     question: 'Is this live or self-paced?',
-    answer: 'The workshop is self-paced with daily lessons delivered via video and email. You can complete the exercises on your own schedule, though we recommend following the 28-day structure for best results.'
+    answer: 'The sprint is self-paced with daily lessons delivered via video and email. You can complete the exercises on your own schedule, though we recommend following the 28-day structure for best results.'
   },
   {
     question: 'What will I have at the end?',

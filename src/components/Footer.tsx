@@ -49,10 +49,10 @@ export const Footer = () => {
             About
           </a>
           <a 
-            href="#workshop-details" 
+            href="#sprint-details" 
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection('workshop-details');
+              scrollToSection('sprint-details');
             }}
             className="text-warmWhite/70 hover:text-warmWhite transition-colors"
           >
