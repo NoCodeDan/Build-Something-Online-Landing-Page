@@ -49,19 +49,19 @@ export const Outcomes = () => {
         </div>
 
         {/* Grid */}
-        <div className="relative mx-auto grid max-w-4xl divide-x divide-y divide-beige-200 border border-beige-200 rounded-2xl bg-warmWhite overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
+        <div className="relative mx-auto grid max-w-6xl divide-x divide-y divide-beige-200 border border-beige-200 rounded-2xl bg-warmWhite overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
           {outcomes.map((outcome, index) => (
             <div 
               key={index} 
-              className="space-y-3 p-8 md:p-10 hover:bg-warmOrange-500/5 transition-colors duration-300"
+              className="space-y-4 p-8 md:p-12 hover:bg-warmOrange-500/5 transition-colors duration-300"
             >
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-warmOrange-500/10 rounded-lg">
-                  <outcome.icon className="size-5 text-warmOrange-600" strokeWidth={1.5} />
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-warmOrange-500/10 rounded-xl">
+                  <outcome.icon className="size-6 text-warmOrange-600" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-base font-semibold text-charcoal">{outcome.title}</h3>
+                <h3 className="text-lg font-semibold text-charcoal">{outcome.title}</h3>
               </div>
-              <p className="text-sm text-charcoal/60 leading-relaxed">{outcome.description}</p>
+              <p className="text-base text-charcoal/60 leading-relaxed">{outcome.description}</p>
             </div>
           ))}
         </div>
