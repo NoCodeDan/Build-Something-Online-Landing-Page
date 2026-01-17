@@ -20,17 +20,17 @@ const audiences = [
     image: aiCuriousImg,
   },
   {
-    title: 'Generalist',
+    title: 'Generalists',
     subtitle: 'Jacks-of-all-trades building versatile, adaptable skills',
     image: generalistImg,
   },
   {
-    title: 'Indie Hacker',
+    title: 'Indie Hackers',
     subtitle: 'Shipping products and side projects with AI as your co-pilot',
     image: indieHackerImg,
   },
   {
-    title: 'Creative',
+    title: 'Creatives',
     subtitle: 'Artists, designers, and makers ready to amplify your craft',
     image: creativeImg,
   },
@@ -78,7 +78,7 @@ export const WhoItsFor = () => {
                   alt={audience.title}
                   style={{
                     objectPosition: audience.title === 'Career Focused' ? '68% center' : 
-                                   audience.title === 'Indie Hacker' ? '80% center' : 
+                                   audience.title === 'Indie Hackers' ? '80% center' : 
                                    audience.title === 'You!' ? '32% center' : 
                                    'center center'
                   }}
@@ -88,9 +88,13 @@ export const WhoItsFor = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />
                 
                 {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <div className={`absolute bottom-0 left-0 right-0 p-6 text-white ${
+                  idx !== expandedCard && audience.title === 'Generalists' ? 'flex items-center justify-center' : ''
+                }`}>
                   <h3 className={`font-bold transition-all duration-500 ${
-                    idx === expandedCard ? 'text-2xl mb-2' : 'text-lg writing-mode-vertical'
+                    idx === expandedCard ? 'text-2xl mb-2' : 
+                    audience.title === 'Generalists' ? 'text-lg' : 
+                    'text-lg writing-mode-vertical'
                   }`}>
                     {audience.title}
                   </h3>
@@ -126,7 +130,7 @@ export const WhoItsFor = () => {
               alt={audience.title}
               style={{
                 objectPosition: audience.title === 'Career Focused' ? '68% center' : 
-                               audience.title === 'Indie Hacker' ? '80% center' : 
+                               audience.title === 'Indie Hackers' ? '80% center' : 
                                audience.title === 'You!' ? '32% center' : 
                                'center center'
               }}
