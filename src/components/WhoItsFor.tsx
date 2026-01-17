@@ -4,34 +4,34 @@ import { useState } from 'react';
 
 const audiences = [
   {
-    title: 'Creators',
-    subtitle: 'Content builders ready to scale their output with AI tools',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
+    title: 'AI Curious',
+    subtitle: 'Exploring AI tools and wondering how to put them to work',
+    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80',
   },
   {
-    title: 'Freelancers',
-    subtitle: 'Consultants looking to deliver more value, faster',
-    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80',
+    title: 'Career Switcher / Upskiller',
+    subtitle: 'Ready to add AI-first skills to your professional toolkit',
+    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80',
   },
   {
-    title: 'Entrepreneurs',
-    subtitle: 'Side-project builders turning ideas into reality',
+    title: 'Solo Builder/Indie Hacker',
+    subtitle: 'Shipping products and side projects with AI as your co-pilot',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+  },
+  {
+    title: 'Creative',
+    subtitle: 'Artists, designers, and makers ready to amplify your craft',
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80',
   },
   {
-    title: 'Beginners',
-    subtitle: 'No technical background required — just curiosity',
+    title: 'Generalist',
+    subtitle: 'Jacks-of-all-trades building versatile, adaptable skills',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
+  },
+  {
+    title: 'You!',
+    subtitle: 'Anyone ready to build something real in 28 days',
     image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80',
-  },
-  {
-    title: 'Marketers',
-    subtitle: 'Growth-focused professionals automating campaigns and content',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
-  },
-  {
-    title: 'Designers',
-    subtitle: 'Creatives expanding their toolkit with AI-powered workflows',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80',
   },
 ];
 
