@@ -5,8 +5,12 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply antialiased;
+  html, body {
+    @apply antialiased overflow-x-hidden;
+  }
+  
+  #root {
+    @apply overflow-x-hidden;
   }
 }
 

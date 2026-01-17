@@ -17,7 +17,7 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-warmWhite">
+    <div className="min-h-screen bg-warmWhite overflow-x-hidden">
       <Hero onJoinClick={() => setIsModalOpen(true)} />
       <SponsorsBanner />
       <Outcomes />
