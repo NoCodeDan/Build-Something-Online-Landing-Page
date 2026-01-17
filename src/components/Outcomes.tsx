@@ -8,55 +8,60 @@ const outcomes = [
   },
   {
     icon: Bot,
-    title: 'A Working AI Agent or Agent-Powered Workflow',
+    title: 'An AI Agent or Workflow',
     description: 'An agent that plans, executes, or automates real tasks — not a demo, a real system.'
   },
   {
     icon: Package,
-    title: 'A Product or Tool Prototype',
+    title: 'A Product Prototype',
     description: 'A simple but functional app, tool, or internal system built with modern AI-powered builders.'
   },
   {
     icon: Sparkles,
-    title: 'A Complete End-to-End Creative Project',
+    title: 'A Creative Project',
     description: 'Including brand assets, media, and distribution — proving you can ship, not just experiment.'
   },
   {
     icon: Settings,
-    title: 'A Reusable AI-First System',
+    title: 'A Reusable AI System',
     description: 'A workflow you can apply again and again for work, side projects, or business ideas.'
   },
   {
     icon: Layers,
-    title: 'A Portfolio-Ready Case Study',
+    title: 'A Portfolio Case Study',
     description: 'A documented project that shows how you think, build, and operate in an AI-first way.'
   }
 ];
 
 export const Outcomes = () => {
   return (
-    <section className="py-24 px-6 bg-beige-50">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">
+    <section className="py-16 md:py-24 px-6 bg-beige-50">
+      <div className="mx-auto max-w-5xl space-y-8 md:space-y-16">
+        {/* Header */}
+        <div className="relative z-10 mx-auto max-w-xl space-y-4 text-center md:space-y-6">
+          <h2 className="text-balance text-4xl font-bold text-charcoal lg:text-5xl">
             What You'll Build in 28 Days
           </h2>
-          <div className="w-16 h-1 bg-warmOrange-500 mx-auto mt-6"></div>
+          <p className="text-lg text-charcoal/70">
+            Real projects. Real skills. A portfolio that proves you can ship.
+          </p>
+          <div className="w-16 h-1 bg-warmOrange-500 mx-auto"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Grid */}
+        <div className="relative mx-auto grid max-w-4xl divide-x divide-y divide-beige-200 border border-beige-200 rounded-2xl bg-warmWhite overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
           {outcomes.map((outcome, index) => (
-            <div
-              key={index}
-              className="bg-warmWhite p-8 rounded-xl border border-beige-200 hover:border-warmOrange-400 transition-all duration-300 hover:shadow-lg"
+            <div 
+              key={index} 
+              className="space-y-3 p-8 md:p-10 hover:bg-warmOrange-500/5 transition-colors duration-300"
             >
-              <outcome.icon className="w-10 h-10 text-warmOrange-500 mb-4" strokeWidth={1.5} />
-              <h3 className="text-xl font-semibold text-charcoal mb-2">
-                {outcome.title}
-              </h3>
-              <p className="text-charcoal/60">
-                {outcome.description}
-              </p>
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-warmOrange-500/10 rounded-lg">
+                  <outcome.icon className="size-5 text-warmOrange-600" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-base font-semibold text-charcoal">{outcome.title}</h3>
+              </div>
+              <p className="text-sm text-charcoal/60 leading-relaxed">{outcome.description}</p>
             </div>
           ))}
         </div>
