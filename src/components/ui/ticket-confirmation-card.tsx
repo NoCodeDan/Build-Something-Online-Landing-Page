@@ -52,14 +52,12 @@ const Barcode = ({ value }: { value: string }) => {
     let currentX = (svgWidth - totalWidth) / 2;
 
     return (
-        <div className="flex flex-col items-center py-2">
+        <div className="flex flex-col items-center py-1 sm:py-2">
              <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width={svgWidth}
-                height={svgHeight}
                 viewBox={`0 0 ${svgWidth} ${svgHeight}`}
                 aria-label={`Barcode for value ${value}`}
-                className="fill-current text-charcoal"
+                className="fill-current text-charcoal w-full max-w-[200px] sm:max-w-[250px] h-auto"
             >
                 {bars.map((bar, index) => {
                     const x = currentX;
@@ -75,7 +73,7 @@ const Barcode = ({ value }: { value: string }) => {
                     );
                 })}
             </svg>
-            <p className="text-sm text-charcoal/60 tracking-[0.3em] mt-2">{value}</p>
+            <p className="text-xs sm:text-sm text-charcoal/60 tracking-[0.2em] sm:tracking-[0.3em] mt-1 sm:mt-2">{value}</p>
         </div>
     );
 };
@@ -173,49 +171,49 @@ const AnimatedTicket = React.forwardRef<HTMLDivElement, TicketProps>(
         <div
           ref={ref}
           className={cn(
-            "relative w-full max-w-sm bg-warmWhite text-charcoal rounded-2xl shadow-2xl font-sans z-10 border-2 border-warmOrange-400/20",
+            "relative w-full bg-warmWhite text-charcoal rounded-xl sm:rounded-2xl shadow-2xl font-sans z-10 border-2 border-warmOrange-400/20",
             "animate-in fade-in-0 zoom-in-95 duration-500",
             className
           )}
           {...props}
         >
-          <div className="p-8 flex flex-col items-center text-center bg-gradient-to-br from-warmOrange-500/10 via-warmOrange-500/5 to-transparent rounded-t-2xl">
-              <div className="p-3 bg-warmOrange-500/20 rounded-full animate-in zoom-in-50 delay-300 duration-500">
-                  {icon || <CheckCircleIcon className="w-10 h-10 text-warmOrange-600 animate-in zoom-in-75 delay-500 duration-500" />}
+          <div className="p-5 sm:p-8 flex flex-col items-center text-center bg-gradient-to-br from-warmOrange-500/10 via-warmOrange-500/5 to-transparent rounded-t-xl sm:rounded-t-2xl">
+              <div className="p-2 sm:p-3 bg-warmOrange-500/20 rounded-full animate-in zoom-in-50 delay-300 duration-500">
+                  {icon || <CheckCircleIcon className="w-8 h-8 sm:w-10 sm:h-10 text-warmOrange-600 animate-in zoom-in-75 delay-500 duration-500" />}
               </div>
-              <h1 className="text-2xl font-bold text-charcoal mt-4">Congratulations! 🎉</h1>
-              <p className="text-charcoal/70 mt-1">
+              <h1 className="text-xl sm:text-2xl font-bold text-charcoal mt-3 sm:mt-4">Congratulations! 🎉</h1>
+              <p className="text-charcoal/70 mt-1 text-sm sm:text-base">
                 You're registered for the sprint
               </p>
           </div>
 
-          <div className="px-8 pb-8 space-y-6">
+          <div className="px-5 pb-5 sm:px-8 sm:pb-8 space-y-4 sm:space-y-6">
               <DashedLine />
 
-              <div className="grid grid-cols-2 gap-4 text-left">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 text-left">
                   <div>
-                      <p className="text-xs text-charcoal/60 uppercase font-medium">Participant</p>
-                      <p className="font-semibold text-lg text-charcoal mt-1">{participantName}</p>
+                      <p className="text-[10px] sm:text-xs text-charcoal/60 uppercase font-medium">Participant</p>
+                      <p className="font-semibold text-base sm:text-lg text-charcoal mt-0.5 sm:mt-1">{participantName}</p>
                   </div>
                   <div className="text-right">
-                      <p className="text-xs text-charcoal/60 uppercase font-medium">Number</p>
-                      <p className="font-bold text-lg text-warmOrange-600 mt-1">#{formattedParticipantNumber}</p>
+                      <p className="text-[10px] sm:text-xs text-charcoal/60 uppercase font-medium">Number</p>
+                      <p className="font-bold text-base sm:text-lg text-warmOrange-600 mt-0.5 sm:mt-1">#{formattedParticipantNumber}</p>
                   </div>
               </div>
 
               <div>
-                  <p className="text-xs text-charcoal/60 uppercase font-medium">Sprint Start Date</p>
-                  <p className="font-medium text-charcoal mt-1">February 1st, 2026</p>
+                  <p className="text-[10px] sm:text-xs text-charcoal/60 uppercase font-medium">Sprint Start Date</p>
+                  <p className="font-medium text-charcoal mt-0.5 sm:mt-1 text-sm sm:text-base">February 1st, 2026</p>
               </div>
 
-              <div className="bg-beige-50 p-4 rounded-lg border border-beige-200">
-                  <div className="flex items-center gap-3">
-                      <div className="p-2 bg-warmOrange-500/10 rounded-lg">
-                          <Sparkles className="w-6 h-6 text-warmOrange-600" />
+              <div className="bg-beige-50 p-3 sm:p-4 rounded-lg border border-beige-200">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                      <div className="p-1.5 sm:p-2 bg-warmOrange-500/10 rounded-lg">
+                          <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-warmOrange-600" />
                       </div>
                       <div>
-                          <p className="font-semibold text-charcoal">Build Something Online</p>
-                          <p className="text-charcoal/60 text-sm">28 Days to AI-First</p>
+                          <p className="font-semibold text-charcoal text-sm sm:text-base">Build Something Online</p>
+                          <p className="text-charcoal/60 text-xs sm:text-sm">28 Days to AI-First</p>
                       </div>
                   </div>
               </div>

@@ -65,31 +65,17 @@
       }
     }
     </script>
-  </head>
-  <body>
-    <!-- Initial content for SEO crawlers (visible before React loads) -->
-    <noscript>
-      <div style="max-width: 1200px; margin: 0 auto; padding: 2rem; font-family: system-ui, sans-serif;">
-        <h1>Build Something Online - 28 Days to AI-First</h1>
-        <p>Build products and become AI-first in 28 days. Daily lessons and hands-on homework designed to help you ship something real.</p>
-        <h2>What You'll Build</h2>
-        <p>In 28 days, you'll build a live landing page, a working AI agent or workflow, a product prototype, a complete end-to-end creative project, a reusable AI-first system, and a portfolio-ready case study.</p>
-        <h2>What You'll Learn</h2>
-        <p>Learn AI-first thinking and workflows, rapid product building with modern tools, using agents and automation for leverage, design and content systems for shipping, and how to keep adapting as tools evolve.</p>
-        <h2>How It Works</h2>
-        <p>Learn through short daily lessons, build with hands-on exercises and templates, and launch something real by the end—a working product, tool, or system you can use and showcase.</p>
-        <h2>Sprint Details</h2>
-        <p>28-day program starting February 1st, 2026. Daily videos and email guidance. 20-45 minutes per day. Includes prompts, templates, checklists, and walkthroughs.</p>
-        <nav>
-          <a href="#curriculum">View Full Curriculum</a> | 
-          <a href="#faq">Frequently Asked Questions</a> | 
-          <a href="#about">About the Instructor</a>
-        </nav>
-      </div>
-    </noscript>
     
-    <!-- React app root with initial SEO content (visible to crawlers before React loads) -->
-    <div id="root">
+    <!-- Hide initial content until React loads to prevent flash -->
+    <style>
+      #root { opacity: 0; }
+      #root.loaded { opacity: 1; transition: opacity 0.15s ease-in; }
+      .seo-content { position: absolute; left: -9999px; }
+    </style>
+  </head>
+  <body style="background-color: #FAFAF8;">
+    <!-- SEO content hidden visually but accessible to crawlers -->
+    <div class="seo-content" aria-hidden="true">
       <h1>Build Something Online - 28 Days to AI-First</h1>
       <p>Build products and become AI-first in 28 days. Daily lessons and hands-on homework designed to help you ship something real.</p>
       <h2>What You'll Build in 28 Days</h2>
@@ -109,19 +95,20 @@
         <li>Design, content, and systems for shipping</li>
         <li>How to keep adapting as tools evolve</li>
       </ul>
-      <h2>How It Works</h2>
-      <p>Learn through short daily lessons that teach you AI-first workflows and practical building techniques. Build with daily hands-on exercises with templates and prompts to help you create real outputs. Launch something real by the end—a working product, tool, or system you can use and showcase.</p>
-      <h2>Sprint Details</h2>
-      <p>Duration: 28 days. Format: Daily videos and email guidance. Time commitment: 20-45 minutes per day. Includes: Prompts, templates, checklists, walkthroughs. Start date: February 1st, 2026. Community: Access to private group and support.</p>
-      <h2>About the Instructor</h2>
-      <p>I'm No-Code Dan—a builder, designer, and educator who's spent the last several years working hands-on with modern AI tools across product, design, code, and creative work. I've taught hundreds of students and worked with brands such as Treehouse, Adalo, and Coda, helping people learn how to build real products using modern tools.</p>
-      <nav>
-        <a href="#curriculum">View Full Curriculum</a> | 
-        <a href="#faq">Frequently Asked Questions</a> | 
-        <a href="#about">About the Instructor</a> | 
-        <a href="#sprint-details">Sprint Details</a>
-      </nav>
     </div>
+    
+    <!-- Noscript fallback for users without JavaScript -->
+    <noscript>
+      <style>#root { opacity: 1 !important; }</style>
+      <div style="max-width: 1200px; margin: 0 auto; padding: 2rem; font-family: system-ui, sans-serif;">
+        <h1>Build Something Online - 28 Days to AI-First</h1>
+        <p>Build products and become AI-first in 28 days. Daily lessons and hands-on homework designed to help you ship something real.</p>
+        <p>Please enable JavaScript to view this site.</p>
+      </div>
+    </noscript>
+    
+    <!-- React app root -->
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

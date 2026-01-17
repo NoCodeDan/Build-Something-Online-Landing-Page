@@ -223,12 +223,12 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/60 backdrop-blur-md overflow-y-auto">
-      <div className="relative bg-warmWhite rounded-2xl shadow-2xl w-full max-w-md p-6 my-4 max-h-[calc(100vh-2rem)] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-2 sm:p-4 bg-charcoal/60 backdrop-blur-md overflow-y-auto">
+      <div className="relative bg-warmWhite rounded-xl sm:rounded-2xl shadow-2xl w-full max-w-[calc(100vw-1rem)] sm:max-w-md p-4 sm:p-6 my-2 sm:my-4">
         {onClose && (
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 text-charcoal/60 hover:text-charcoal transition-colors rounded-lg hover:bg-beige-100 z-10"
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 p-1.5 sm:p-2 text-charcoal/60 hover:text-charcoal transition-colors rounded-lg hover:bg-beige-100 z-10"
             aria-label="Close"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -238,22 +238,22 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
         )}
 
         {/* Ticket Badge */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-4 sm:mb-6">
           <div
             ref={badgeRef}
-            className="relative transition-transform duration-300 ease-out w-full max-w-sm"
+            className="relative transition-transform duration-300 ease-out w-full"
             onMouseMove={(e) => {
-              const rect = e.currentTarget.getBoundingClientRect();
-              const centerX = rect.left + rect.width / 2;
-              const mouseX = e.clientX;
-              const relativeX = (mouseX - centerX) / (rect.width / 2); // -1 to 1
-              
-              // Calculate rotation based on mouse position
-              const rotateY = relativeX * 8;
-              const rotateX = -Math.abs(relativeX) * 3;
-              const scale = 1.02;
-              
-              e.currentTarget.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(${scale})`;
+              // Only apply hover effect on non-touch devices
+              if (window.matchMedia('(hover: hover)').matches) {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const mouseX = e.clientX;
+                const relativeX = (mouseX - centerX) / (rect.width / 2);
+                const rotateY = relativeX * 8;
+                const rotateX = -Math.abs(relativeX) * 3;
+                const scale = 1.02;
+                e.currentTarget.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(${scale})`;
+              }
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
@@ -264,17 +264,17 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
               participantNumber={participantNumber || 0}
               date={new Date()}
               barcodeValue={`BSO-${String(participantNumber || 0).padStart(3, '0')}-${Date.now().toString().slice(-6)}`}
-              icon={<Sparkles className="w-10 h-10 text-warmOrange-600" />}
+              icon={<Sparkles className="w-8 h-8 sm:w-10 sm:h-10 text-warmOrange-600" />}
             />
           </div>
         </div>
 
         {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
           <button
             onClick={downloadBadge}
             disabled={isDownloading}
-            className="flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-warmOrange-500 to-warmOrange-600 text-white rounded-lg font-medium hover:from-warmOrange-600 hover:to-warmOrange-700 shadow-md hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+            className="flex items-center justify-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-warmOrange-500 to-warmOrange-600 text-white rounded-lg font-medium hover:from-warmOrange-600 hover:to-warmOrange-700 shadow-md hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
           >
             <Download className="w-4 h-4" />
             <span>{isDownloading ? 'Downloading...' : 'Download Badge'}</span>
@@ -282,7 +282,7 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
           
           <button
             onClick={shareBadge}
-            className="flex items-center justify-center gap-2 px-5 py-2.5 bg-beige-100 text-charcoal rounded-lg font-medium hover:bg-beige-200 border border-beige-200 transition-all duration-200 text-sm"
+            className="flex items-center justify-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-beige-100 text-charcoal rounded-lg font-medium hover:bg-beige-200 border border-beige-200 transition-all duration-200 text-sm"
           >
             <Share2 className="w-4 h-4" />
             <span>Share</span>
@@ -290,13 +290,13 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
         </div>
 
         {shareUrl && (
-          <p className="text-center mt-3 text-sm text-warmOrange-600">
+          <p className="text-center mt-2 sm:mt-3 text-sm text-warmOrange-600">
             {shareUrl}
           </p>
         )}
 
-        <p className="text-center mt-4 text-xs text-charcoal/60">
-          Share your badge to let others know you're joining the sprint!
+        <p className="text-center mt-3 sm:mt-4 text-xs text-charcoal/60">
+          Share your badge to let others know you're joining!
         </p>
       </div>
     </div>

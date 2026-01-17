@@ -5,10 +5,17 @@ import { convex } from './convex';
 import App from './App.tsx';
 import './index.css';
 
-createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')!;
+
+createRoot(root).render(
   <StrictMode>
     <ConvexProvider client={convex}>
       <App />
     </ConvexProvider>
   </StrictMode>
 );
+
+// Reveal the app after React has mounted
+requestAnimationFrame(() => {
+  root.classList.add('loaded');
+});
