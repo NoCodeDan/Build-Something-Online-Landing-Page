@@ -20,6 +20,11 @@ const audiences = [
     image: aiCuriousImg,
   },
   {
+    title: 'Generalist',
+    subtitle: 'Jacks-of-all-trades building versatile, adaptable skills',
+    image: generalistImg,
+  },
+  {
     title: 'Indie Hacker',
     subtitle: 'Shipping products and side projects with AI as your co-pilot',
     image: indieHackerImg,
@@ -28,11 +33,6 @@ const audiences = [
     title: 'Creative',
     subtitle: 'Artists, designers, and makers ready to amplify your craft',
     image: creativeImg,
-  },
-  {
-    title: 'Generalist',
-    subtitle: 'Jacks-of-all-trades building versatile, adaptable skills',
-    image: generalistImg,
   },
   {
     title: 'You!',
@@ -76,6 +76,12 @@ export const WhoItsFor = () => {
                   className="w-full h-full object-cover"
                   src={audience.image}
                   alt={audience.title}
+                  style={{
+                    objectPosition: audience.title === 'Career Focused' ? '68% center' : 
+                                   audience.title === 'Indie Hacker' ? '80% center' : 
+                                   audience.title === 'You!' ? '32% center' : 
+                                   'center center'
+                  }}
                 />
                 
                 {/* Gradient Overlay */}
@@ -118,6 +124,12 @@ export const WhoItsFor = () => {
               className="w-full h-full object-cover"
               src={audience.image}
               alt={audience.title}
+              style={{
+                objectPosition: audience.title === 'Career Focused' ? '68% center' : 
+                               audience.title === 'Indie Hacker' ? '80% center' : 
+                               audience.title === 'You!' ? '32% center' : 
+                               'center center'
+              }}
             />
             
             {/* Gradient Overlay */}
