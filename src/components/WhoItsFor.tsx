@@ -26,7 +26,7 @@ export const WhoItsFor = () => {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">
-            Who It's For
+            Who This Sprint Is For
           </h2>
           <div className="w-16 h-1 bg-warmOrange-500 mx-auto mt-6"></div>
         </div>
