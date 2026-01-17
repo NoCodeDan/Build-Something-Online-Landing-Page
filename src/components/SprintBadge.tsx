@@ -230,42 +230,143 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
   };
 
   const shareText = `I just signed up for the Build Something Online Sprint! 🚀 Join me:`;
-  const shareUrl = window.location.href;
+  const siteUrl = window.location.href;
+
+  // Helper to generate image blob
+  const generateImageBlob = async (): Promise<Blob | null> => {
+    const screenshotBadge = createScreenshotBadge(name, participantNumber);
+    document.body.appendChild(screenshotBadge);
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
+    const html2canvas = (await import('html2canvas')).default;
+    const canvas = await html2canvas(screenshotBadge.firstElementChild as HTMLElement, {
+      backgroundColor: '#FAFAF8',
+      scale: 2,
+      logging: false,
+      useCORS: true,
+      allowTaint: false,
+    });
+    
+    document.body.removeChild(screenshotBadge);
+    
+    return new Promise((resolve) => {
+      canvas.toBlob((blob) => resolve(blob), 'image/png', 1.0);
+    });
+  };
+
+  // Helper to copy image to clipboard
+  const copyImageToClipboard = async (blob: Blob): Promise<boolean> => {
+    try {
+      await navigator.clipboard.write([
+        new ClipboardItem({ 'image/png': blob })
+      ]);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  // Helper to download blob as file
+  const downloadBlob = (blob: Blob, filename: string) => {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
+  // Share with image - tries clipboard first, falls back to download
+  const shareWithImage = async (platform: string, shareUrlFn: () => void) => {
+    setIsShareDropdownOpen(false);
+    setShareMessage('Preparing image...');
+    
+    try {
+      const blob = await generateImageBlob();
+      if (!blob) {
+        setShareMessage('Failed to generate image');
+        setTimeout(() => setShareMessage(''), 3000);
+        return;
+      }
+
+      // Try to copy image to clipboard
+      const copied = await copyImageToClipboard(blob);
+      
+      if (copied) {
+        setShareMessage(`Image copied! Paste it in your ${platform} post.`);
+      } else {
+        // Fallback: download the image
+        downloadBlob(blob, `sprint-badge-${name.replace(/\s+/g, '-').toLowerCase()}.png`);
+        setShareMessage(`Image downloaded! Attach it to your ${platform} post.`);
+      }
+      
+      // Open the share URL after a brief delay
+      setTimeout(() => {
+        shareUrlFn();
+      }, 500);
+      
+      setTimeout(() => setShareMessage(''), 6000);
+    } catch (error) {
+      console.error('Error sharing:', error);
+      setShareMessage('Something went wrong. Please try again.');
+      setTimeout(() => setShareMessage(''), 3000);
+    }
+  };
 
   const shareToX = () => {
-    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
-    window.open(url, '_blank', 'width=550,height=420');
-    setIsShareDropdownOpen(false);
+    shareWithImage('X', () => {
+      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(siteUrl)}`;
+      window.open(url, '_blank', 'width=550,height=420');
+    });
   };
 
   const shareToLinkedIn = () => {
-    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
-    window.open(url, '_blank', 'width=550,height=420');
-    setIsShareDropdownOpen(false);
+    shareWithImage('LinkedIn', () => {
+      const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(siteUrl)}`;
+      window.open(url, '_blank', 'width=550,height=420');
+    });
   };
 
   const shareToFacebook = () => {
-    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}`;
-    window.open(url, '_blank', 'width=550,height=420');
-    setIsShareDropdownOpen(false);
+    shareWithImage('Facebook', () => {
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteUrl)}&quote=${encodeURIComponent(shareText)}`;
+      window.open(url, '_blank', 'width=550,height=420');
+    });
   };
 
   const shareToThreads = () => {
-    const url = `https://www.threads.net/intent/post?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
-    window.open(url, '_blank', 'width=550,height=420');
-    setIsShareDropdownOpen(false);
+    shareWithImage('Threads', () => {
+      const url = `https://www.threads.net/intent/post?text=${encodeURIComponent(`${shareText} ${siteUrl}`)}`;
+      window.open(url, '_blank', 'width=550,height=420');
+    });
   };
 
   const shareToInstagram = async () => {
-    // Instagram doesn't have a web share API, so we download the image and show instructions
     setIsShareDropdownOpen(false);
-    await downloadBadge();
-    setShareMessage('Image downloaded! Open Instagram and share from your camera roll.');
-    setTimeout(() => setShareMessage(''), 5000);
+    setShareMessage('Preparing image...');
+    
+    try {
+      const blob = await generateImageBlob();
+      if (!blob) {
+        setShareMessage('Failed to generate image');
+        setTimeout(() => setShareMessage(''), 3000);
+        return;
+      }
+      
+      downloadBlob(blob, `sprint-badge-${name.replace(/\s+/g, '-').toLowerCase()}.png`);
+      setShareMessage('Image downloaded! Open Instagram and share from your camera roll.');
+      setTimeout(() => setShareMessage(''), 6000);
+    } catch (error) {
+      console.error('Error:', error);
+      setShareMessage('Something went wrong. Please try again.');
+      setTimeout(() => setShareMessage(''), 3000);
+    }
   };
 
   const copyLink = async () => {
-    const fullShareText = `${shareText} ${shareUrl}`;
+    const fullShareText = `${shareText} ${siteUrl}`;
     await navigator.clipboard.writeText(fullShareText);
     setShareMessage('Link copied to clipboard!');
     setTimeout(() => setShareMessage(''), 3000);
