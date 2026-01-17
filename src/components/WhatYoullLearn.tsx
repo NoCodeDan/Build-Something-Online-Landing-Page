@@ -85,17 +85,20 @@ export const WhatYoullLearn = () => {
     <section className="py-20 md:py-28 bg-beige-50">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div className="mb-12">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">
             What You'll Learn
           </h2>
-          <div className="w-16 h-1 bg-warmOrange-500"></div>
+          <p className="text-lg text-charcoal/70 max-w-2xl mx-auto mb-4">
+            Master the mindset, tools, and techniques to build anything online, AI-first.
+          </p>
+          <div className="w-16 h-1 bg-warmOrange-500 mx-auto"></div>
         </div>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 auto-rows-auto gap-4">
           <BentoCard {...cardContents[0]} className="lg:col-span-3 lg:row-span-2" />
-          <BentoCard {...cardContents[1]} className="lg:col-span-3 lg:row-span-2" />
+          <BentoCard {...cardContents[1]} className="lg:col-span-2 lg:row-span-2" />
           <BentoCard {...cardContents[2]} className="lg:col-span-4 lg:row-span-1" />
           <BentoCard {...cardContents[3]} className="lg:col-span-2 lg:row-span-1" />
           <BentoCard {...cardContents[4]} className="lg:col-span-2 lg:row-span-1" />
@@ -107,7 +110,7 @@ export const WhatYoullLearn = () => {
             Skills that compound.
           </p>
           <p className="text-charcoal/60">
-            Everything you learn builds on the previous day—by Day 28, you'll have a complete AI-first toolkit.
+            Every lesson, every project, builds on the last—creating a powerful, adaptable skillset.
           </p>
         </div>
       </div>
