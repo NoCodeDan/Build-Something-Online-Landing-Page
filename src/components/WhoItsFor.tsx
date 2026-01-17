@@ -39,7 +39,7 @@ export const WhoItsFor = () => {
   const [expandedCard, setExpandedCard] = useState(2);
 
   const getCardWidth = (index: number) =>
-    index === expandedCard ? '20rem' : '5rem';
+    index === expandedCard ? '28rem' : '8rem';
 
   return (
     <section className="py-20 md:py-28 bg-warmWhite overflow-hidden">
@@ -54,7 +54,7 @@ export const WhoItsFor = () => {
       {/* Expanding Cards - Desktop - extends beyond container */}
       <div className="hidden lg:block">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center justify-start gap-2 -mr-6 pr-6" style={{ width: 'calc(100% + 10rem)' }}>
+          <div className="flex items-center justify-start gap-3" style={{ width: 'calc(100% + 20rem)' }}>
             {audiences.map((audience, idx) => (
               <div
                 key={idx}
