@@ -177,7 +177,7 @@ export const WhoItsFor = () => {
 
       {/* Mobile Modal/Overlay */}
       {mobileOpenCard !== null && (
-        <div className="fixed inset-0 bg-charcoal/80 z-50 lg:hidden flex items-center justify-center p-6">
+        <div className="fixed inset-0 bg-charcoal/95 z-50 lg:hidden flex items-center justify-center p-6">
           <div
             ref={modalRef}
             className="relative overflow-hidden rounded-2xl shadow-2xl w-full max-w-sm"
