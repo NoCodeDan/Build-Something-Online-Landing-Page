@@ -54,7 +54,7 @@ export const WhoItsFor = () => {
       {/* Expanding Cards - Desktop - extends beyond container */}
       <div className="hidden lg:block">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center justify-start gap-3" style={{ width: 'calc(100% + 20rem)' }}>
+          <div className="flex items-center justify-start gap-3">
             {audiences.map((audience, idx) => (
               <div
                 key={idx}

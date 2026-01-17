@@ -52,7 +52,7 @@ export const Outcomes = () => {
         <div className="max-w-6xl mx-auto px-6">
           <div 
             className="grid grid-cols-3 divide-x divide-y divide-beige-200 border border-beige-200 rounded-2xl bg-warmWhite overflow-hidden"
-            style={{ width: 'calc(100% + 20rem)' }}
+            style={{ width: '72rem' }}
           >
             {outcomes.map((outcome, index) => (
               <div 
