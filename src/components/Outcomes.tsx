@@ -35,33 +35,55 @@ const outcomes = [
 
 export const Outcomes = () => {
   return (
-    <section className="py-16 md:py-24 px-6 bg-beige-50">
-      <div className="mx-auto max-w-5xl space-y-8 md:space-y-16">
-        {/* Header */}
-        <div className="relative z-10 mx-auto max-w-xl space-y-4 text-center md:space-y-6">
-          <h2 className="text-balance text-4xl font-bold text-charcoal lg:text-5xl">
-            What You'll Build in 28 Days
-          </h2>
-          <p className="text-lg text-charcoal/70">
-            Real projects. Real skills. A portfolio that proves you can ship.
-          </p>
-          <div className="w-16 h-1 bg-warmOrange-500 mx-auto"></div>
-        </div>
+    <section className="py-16 md:py-24 bg-beige-50 overflow-hidden">
+      {/* Header - constrained width */}
+      <div className="max-w-6xl mx-auto px-6 mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">
+          What You'll Build in 28 Days
+        </h2>
+        <p className="text-lg text-charcoal/70 mb-4">
+          Real projects. Real skills. A portfolio that proves you can ship.
+        </p>
+        <div className="w-16 h-1 bg-warmOrange-500"></div>
+      </div>
 
-        {/* Grid */}
-        <div className="relative mx-auto grid max-w-6xl divide-x divide-y divide-beige-200 border border-beige-200 rounded-2xl bg-warmWhite overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
+      {/* Grid - extends beyond container to match Who Its For slider */}
+      <div className="hidden lg:block">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-3 divide-x divide-y divide-beige-200 border border-beige-200 rounded-2xl bg-warmWhite overflow-hidden" style={{ width: 'calc(100% + 20rem)' }}>
+            {outcomes.map((outcome, index) => (
+              <div 
+                key={index} 
+                className="space-y-4 p-8 md:p-10 hover:bg-warmOrange-500/5 transition-colors duration-300"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-warmOrange-500/10 rounded-xl">
+                    <outcome.icon className="size-6 text-warmOrange-600" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-lg font-semibold text-charcoal">{outcome.title}</h3>
+                </div>
+                <p className="text-base text-charcoal/60 leading-relaxed">{outcome.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Grid */}
+      <div className="lg:hidden px-6">
+        <div className="grid sm:grid-cols-2 divide-x divide-y divide-beige-200 border border-beige-200 rounded-2xl bg-warmWhite overflow-hidden">
           {outcomes.map((outcome, index) => (
             <div 
               key={index} 
-              className="space-y-4 p-8 md:p-12 hover:bg-warmOrange-500/5 transition-colors duration-300"
+              className="space-y-3 p-6 hover:bg-warmOrange-500/5 transition-colors duration-300"
             >
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-warmOrange-500/10 rounded-xl">
-                  <outcome.icon className="size-6 text-warmOrange-600" strokeWidth={1.5} />
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-warmOrange-500/10 rounded-lg">
+                  <outcome.icon className="size-5 text-warmOrange-600" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-lg font-semibold text-charcoal">{outcome.title}</h3>
+                <h3 className="text-base font-semibold text-charcoal">{outcome.title}</h3>
               </div>
-              <p className="text-base text-charcoal/60 leading-relaxed">{outcome.description}</p>
+              <p className="text-sm text-charcoal/60 leading-relaxed">{outcome.description}</p>
             </div>
           ))}
         </div>
