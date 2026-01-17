@@ -42,9 +42,11 @@ interface SprintBadgeProps {
 export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgeProps) => {
   const badgeRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const [isDownloading, setIsDownloading] = useState(false);
   const [shareMessage, setShareMessage] = useState('');
   const [isShareDropdownOpen, setIsShareDropdownOpen] = useState(false);
+  const [dropdownPosition, setDropdownPosition] = useState<'top' | 'bottom'>('bottom');
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -56,6 +58,24 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  // Calculate dropdown position when opening
+  const toggleDropdown = () => {
+    if (!isShareDropdownOpen && buttonRef.current) {
+      const buttonRect = buttonRef.current.getBoundingClientRect();
+      const dropdownHeight = 280; // Approximate height of dropdown
+      const spaceBelow = window.innerHeight - buttonRect.bottom;
+      const spaceAbove = buttonRect.top;
+      
+      // If not enough space below, open above
+      if (spaceBelow < dropdownHeight && spaceAbove > spaceBelow) {
+        setDropdownPosition('top');
+      } else {
+        setDropdownPosition('bottom');
+      }
+    }
+    setIsShareDropdownOpen(!isShareDropdownOpen);
+  };
 
   const createScreenshotBadge = (name: string, participantNumber: number) => {
     const formattedNumber = String(participantNumber).padStart(3, '0');
@@ -313,7 +333,8 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
           {/* Share dropdown */}
           <div className="relative" ref={dropdownRef}>
             <button
-              onClick={() => setIsShareDropdownOpen(!isShareDropdownOpen)}
+              ref={buttonRef}
+              onClick={toggleDropdown}
               className="flex items-center justify-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-beige-100 text-charcoal rounded-lg font-medium hover:bg-beige-200 border border-beige-200 transition-all duration-200 text-sm w-full sm:w-auto"
             >
               <Share2 className="w-4 h-4" />
@@ -322,7 +343,11 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
             </button>
             
             {isShareDropdownOpen && (
-              <div className="absolute bottom-full sm:bottom-auto sm:top-full left-0 right-0 sm:left-auto sm:right-0 mb-2 sm:mb-0 sm:mt-2 bg-white rounded-lg shadow-lg border border-beige-200 py-2 z-50 min-w-[180px]">
+              <div className={`absolute left-0 right-0 sm:left-auto sm:right-0 bg-white rounded-lg shadow-lg border border-beige-200 py-2 z-50 min-w-[180px] ${
+                dropdownPosition === 'top' 
+                  ? 'bottom-full mb-2' 
+                  : 'top-full mt-2'
+              }`}>
                 <button
                   onClick={shareToX}
                   className="flex items-center gap-3 w-full px-4 py-2.5 text-left text-sm text-charcoal hover:bg-beige-50 transition-colors"
