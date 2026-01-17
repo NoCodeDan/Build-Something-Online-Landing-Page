@@ -14,9 +14,9 @@ const audiences = [
     image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80',
   },
   {
-    title: 'Indie Hacker',
-    subtitle: 'Shipping products and side projects with AI as your co-pilot',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    title: 'Generalist',
+    subtitle: 'Jacks-of-all-trades building versatile, adaptable skills',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
   },
   {
     title: 'Creative',
@@ -24,9 +24,9 @@ const audiences = [
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80',
   },
   {
-    title: 'Generalist',
-    subtitle: 'Jacks-of-all-trades building versatile, adaptable skills',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
+    title: 'Indie Hacker',
+    subtitle: 'Shipping products and side projects with AI as your co-pilot',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
   },
   {
     title: 'You!',
