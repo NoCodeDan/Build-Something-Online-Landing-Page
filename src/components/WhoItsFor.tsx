@@ -1,55 +1,128 @@
-import { Users, Briefcase, Lightbulb, GraduationCap } from 'lucide-react';
+"use client";
+
+import { useState } from 'react';
 
 const audiences = [
   {
-    icon: Users,
-    title: 'Creators and content builders',
+    title: 'Creators',
+    subtitle: 'Content builders ready to scale their output with AI tools',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
   },
   {
-    icon: Briefcase,
-    title: 'Freelancers and consultants',
+    title: 'Freelancers',
+    subtitle: 'Consultants looking to deliver more value, faster',
+    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80',
   },
   {
-    icon: Lightbulb,
-    title: 'Aspiring entrepreneurs and side-project builders',
+    title: 'Entrepreneurs',
+    subtitle: 'Side-project builders turning ideas into reality',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80',
   },
   {
-    icon: GraduationCap,
-    title: 'Beginners welcome',
-    subtitle: 'No advanced background required'
-  }
+    title: 'Beginners',
+    subtitle: 'No technical background required — just curiosity',
+    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80',
+  },
 ];
 
 export const WhoItsFor = () => {
+  const [expandedCard, setExpandedCard] = useState(1);
+
+  const getCardWidth = (index: number) =>
+    index === expandedCard ? '20rem' : '6rem';
+
   return (
-    <section className="py-24 px-6 bg-beige-50">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
+    <section className="py-20 md:py-28 bg-warmWhite overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
+        <div className="mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">
             Who This Sprint Is For
           </h2>
-          <div className="w-16 h-1 bg-warmOrange-500 mx-auto mt-6"></div>
+          <div className="w-16 h-1 bg-warmOrange-500"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {audiences.map((audience, index) => (
+        {/* Expanding Cards - Desktop */}
+        <div className="hidden lg:flex items-center justify-center gap-2">
+          {audiences.map((audience, idx) => (
             <div
-              key={index}
-              className="flex items-start gap-4 p-8 bg-warmWhite rounded-xl border border-beige-200"
+              key={idx}
+              className="relative cursor-pointer overflow-hidden rounded-2xl transition-all duration-500 ease-in-out shadow-lg"
+              style={{
+                width: getCardWidth(idx),
+                height: '24rem',
+              }}
+              onMouseEnter={() => setExpandedCard(idx)}
             >
-              <audience.icon className="w-8 h-8 text-warmOrange-500 flex-shrink-0" strokeWidth={1.5} />
-              <div>
-                <h3 className="text-lg font-semibold text-charcoal mb-1">
+              {/* Image */}
+              <img
+                className="w-full h-full object-cover"
+                src={audience.image}
+                alt={audience.title}
+              />
+              
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />
+              
+              {/* Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className={`font-bold transition-all duration-500 ${
+                  idx === expandedCard ? 'text-2xl mb-2' : 'text-lg writing-mode-vertical'
+                }`}>
                   {audience.title}
                 </h3>
-                {audience.subtitle && (
-                  <p className="text-charcoal/60 text-sm">
-                    {audience.subtitle}
-                  </p>
-                )}
+                <p className={`text-white/80 text-sm leading-relaxed transition-all duration-500 ${
+                  idx === expandedCard ? 'opacity-100 max-h-20' : 'opacity-0 max-h-0'
+                } overflow-hidden`}>
+                  {audience.subtitle}
+                </p>
               </div>
+              
+              {/* Orange accent bar */}
+              <div className={`absolute bottom-0 left-0 right-0 h-1 bg-warmOrange-500 transition-all duration-500 ${
+                idx === expandedCard ? 'opacity-100' : 'opacity-0'
+              }`} />
             </div>
           ))}
+        </div>
+
+        {/* Mobile Grid */}
+        <div className="grid grid-cols-2 gap-4 lg:hidden">
+          {audiences.map((audience, idx) => (
+            <div
+              key={idx}
+              className="relative overflow-hidden rounded-2xl shadow-lg"
+              style={{ height: '16rem' }}
+            >
+              {/* Image */}
+              <img
+                className="w-full h-full object-cover"
+                src={audience.image}
+                alt={audience.title}
+              />
+              
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-transparent" />
+              
+              {/* Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <h3 className="font-bold text-lg mb-1">{audience.title}</h3>
+                <p className="text-white/80 text-xs leading-relaxed">
+                  {audience.subtitle}
+                </p>
+              </div>
+              
+              {/* Orange accent bar */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-warmOrange-500" />
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom tagline */}
+        <div className="mt-12 text-center">
+          <p className="text-charcoal/60 text-lg">
+            Whether you're technical or not — if you want to build, this is for you.
+          </p>
         </div>
       </div>
     </section>
