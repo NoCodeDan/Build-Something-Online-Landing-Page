@@ -4,7 +4,7 @@ import { Plus, Minus } from 'lucide-react';
 const faqs = [
   {
     question: 'Do I need technical experience?',
-    answer: 'No. This sprint is designed for beginners. We\'ll guide you through every step with clear instructions, templates, and modern AI tools that handle the heavy lifting.'
+    answer: 'No. This workshop is designed for beginners. We\'ll guide you through every step with clear instructions, templates, and modern AI tools that handle the heavy lifting.'
   },
   {
     question: 'What tools will I use?',
@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     question: 'Is this live or self-paced?',
-    answer: 'The sprint is self-paced with daily lessons delivered via video and email. You can complete the exercises on your own schedule, though we recommend following the 28-day structure for best results.'
+    answer: 'The workshop is self-paced with daily lessons delivered via video and email. You can complete the exercises on your own schedule, though we recommend following the 28-day structure for best results.'
   },
   {
     question: 'What will I have at the end?',
@@ -32,7 +32,7 @@ export const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="py-24 px-6 bg-warmWhite">
+    <section className="py-24 px-6 bg-warmWhite">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-4">
@@ -62,7 +62,7 @@ export const FAQ = () => {
               </button>
 
               {openIndex === index && (
-                <div className="px-6 pb-6 pt-4">
+                <div className="px-6 pb-6">
                   <p className="text-charcoal/70 leading-relaxed">
                     {faq.answer}
                   </p>

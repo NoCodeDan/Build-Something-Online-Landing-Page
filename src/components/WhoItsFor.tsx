@@ -1,37 +1,43 @@
 "use client";
 
 import { useState } from 'react';
+import aiCuriousImg from '@/images/Target ICPs/man-coder-and-glasses-in-office-for-portrait-web-2026-01-09-10-23-10-utc (1).jpg';
+import careerFocusedImg from '@/images/Target ICPs/conference-speech-for-work-future-and-man-with-mi-2026-01-09-11-07-12-utc (1).jpg';
+import indieHackerImg from '@/images/Target ICPs/working-on-a-new-game-cropped-shot-of-a-young-pro-2026-01-09-11-45-23-utc (1).jpg';
+import creativeImg from '@/images/Target ICPs/studio-man-and-picture-editor-on-computer-with-po-2026-01-09-10-40-22-utc (1).jpg';
+import generalistImg from '@/images/Target ICPs/laptop-author-or-asian-woman-in-home-office-typin-2026-01-09-11-15-08-utc (1).jpg';
+import youImg from '@/images/Target ICPs/woman-laptop-and-hacker-typing-in-home-with-softw-2026-01-09-11-43-46-utc (1).jpg';
 
 const audiences = [
   {
     title: 'AI Curious',
     subtitle: 'Exploring AI tools and wondering how to put them to work',
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80',
+    image: careerFocusedImg,
   },
   {
     title: 'Career Focused',
     subtitle: 'Ready to add AI-first skills to your professional toolkit',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80',
-  },
-  {
-    title: 'Generalist',
-    subtitle: 'Jacks-of-all-trades building versatile, adaptable skills',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
-  },
-  {
-    title: 'Creative',
-    subtitle: 'Artists, designers, and makers ready to amplify your craft',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80',
+    image: aiCuriousImg,
   },
   {
     title: 'Indie Hacker',
     subtitle: 'Shipping products and side projects with AI as your co-pilot',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    image: indieHackerImg,
+  },
+  {
+    title: 'Creative',
+    subtitle: 'Artists, designers, and makers ready to amplify your craft',
+    image: creativeImg,
+  },
+  {
+    title: 'Generalist',
+    subtitle: 'Jacks-of-all-trades building versatile, adaptable skills',
+    image: generalistImg,
   },
   {
     title: 'You!',
     subtitle: 'Anyone ready to build something real in 28 days',
-    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80',
+    image: youImg,
   },
 ];
 
