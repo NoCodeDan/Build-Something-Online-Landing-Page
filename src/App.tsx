@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Hero } from './components/Hero';
 import { SponsorsBanner } from './components/SponsorsBanner';
 import { Outcomes } from './components/Outcomes';
+import { Stats } from './components/Stats';
 import { WhatYoullLearn } from './components/WhatYoullLearn';
 import { WhoItsFor } from './components/WhoItsFor';
 import { HowItWorks } from './components/HowItWorks';
@@ -21,6 +22,7 @@ function App() {
       <Hero onJoinClick={() => setIsModalOpen(true)} />
       <SponsorsBanner />
       <Outcomes />
+      <Stats />
       <WhoItsFor />
       <WhatYoullLearn />
       <HowItWorks />
