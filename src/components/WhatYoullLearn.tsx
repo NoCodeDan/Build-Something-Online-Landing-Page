@@ -102,7 +102,7 @@ export const WhatYoullLearn = () => {
         </div>
 
         {/* Footer Tagline */}
-        <div className="max-w-2xl ml-auto text-right mt-8 lg:-mt-16 relative z-10">
+        <div className="max-w-2xl ml-auto text-right mt-8 lg:-mt-[105px] relative z-10">
           <p className="text-2xl md:text-3xl font-bold text-charcoal mb-2">
             Skills that compound.
           </p>

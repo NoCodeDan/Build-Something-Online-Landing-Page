@@ -5,14 +5,39 @@ import {
   Area,
   ResponsiveContainer,
   Tooltip,
+  TooltipProps,
+  XAxis,
 } from "recharts";
 
+const CustomTooltip = ({ active, payload }: TooltipProps<number, string>) => {
+  if (active && payload && payload.length) {
+    const dataPoint = payload[0].payload as { name: string; value: number };
+    return (
+      <div style={{
+        backgroundColor: '#FAFAF8',
+        border: '1px solid #E8E3D8',
+        borderRadius: '8px',
+        padding: '8px 12px',
+        fontSize: '14px'
+      }}>
+        <p style={{ color: '#1A1A1A', fontWeight: 'bold', marginBottom: '4px' }}>
+          {dataPoint.name}
+        </p>
+        <p style={{ color: '#DB6B3F', margin: 0 }}>
+          {dataPoint.value}%
+        </p>
+      </div>
+    );
+  }
+  return null;
+};
+
 const data = [
-  { name: "Day 1", value: 10 },
-  { name: "Day 7", value: 25 },
-  { name: "Day 14", value: 50 },
-  { name: "Day 21", value: 80 },
-  { name: "Day 28", value: 100 },
+  { name: "Exploring", value: 10 },
+  { name: "Learning", value: 25 },
+  { name: "Applying", value: 50 },
+  { name: "Building", value: 80 },
+  { name: "AI-First", value: 100 },
 ];
 
 const stats = [
@@ -27,9 +52,9 @@ export const Stats = () => {
     <section className="w-full py-20 md:py-28 bg-warmWhite">
       <div className="max-w-6xl mx-auto px-6">
         <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-charcoal mb-4 max-w-4xl">
-          Transform how you build.{" "}
+          Become the person who knows how to build with AI.{" "}
           <span className="text-charcoal/60 font-medium">
-            Join hundreds of creators learning to ship faster with AI-first workflows and modern tools.
+            In 28 days, you'll go from experimenting with tools to confidently shipping work using AI-first systems you can reuse anywhere.
           </span>
         </h3>
 
@@ -54,15 +79,11 @@ export const Stats = () => {
                 <stop offset="95%" stopColor="#DB6B3F" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <Tooltip 
-              contentStyle={{ 
-                backgroundColor: '#FAFAF8', 
-                border: '1px solid #E8E3D8',
-                borderRadius: '8px',
-                fontSize: '14px'
-              }}
-              labelStyle={{ color: '#1A1A1A' }}
+            <XAxis 
+              dataKey="name" 
+              hide={true}
             />
+            <Tooltip content={<CustomTooltip />} />
             <Area
               type="monotone"
               dataKey="value"
@@ -77,7 +98,7 @@ export const Stats = () => {
       
       <div className="max-w-6xl mx-auto px-6 mt-4">
         <p className="text-sm text-charcoal/50 text-center md:text-left">
-          Your skill progression over the 28-day sprint
+          Your progression from exploring to AI-First
         </p>
       </div>
     </section>
