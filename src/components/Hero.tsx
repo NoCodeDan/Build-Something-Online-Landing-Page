@@ -14,7 +14,7 @@ export const Hero = ({ onJoinClick }: HeroProps) => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-beige-200/30 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
+      <div className="max-w-6xl mx-auto text-center relative z-10">
         <div className="inline-flex items-center gap-2 mb-8 px-5 py-3 bg-gradient-to-r from-warmOrange-400/20 via-warmOrange-500/20 to-warmOrange-600/20 rounded-full border border-warmOrange-400/30 shadow-sm">
           <Sparkles className="w-4 h-4 text-warmOrange-500" />
           <span className="text-sm font-semibold bg-gradient-to-r from-warmOrange-600 to-warmOrange-500 bg-clip-text text-transparent">

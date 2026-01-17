@@ -196,7 +196,7 @@ export const Curriculum = () => {
 
   return (
     <section id="curriculum" className="py-24 px-6 bg-warmWhite">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-warmOrange-500/10 rounded-full">
             <Calendar className="w-4 h-4 text-warmOrange-500" />
