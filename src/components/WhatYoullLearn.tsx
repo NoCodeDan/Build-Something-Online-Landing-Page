@@ -82,7 +82,7 @@ const BentoCard = ({
 
 export const WhatYoullLearn = () => {
   return (
-    <section className="py-20 md:py-28 bg-beige-50">
+    <section className="pt-12 md:pt-16 pb-20 md:pb-28 bg-beige-50">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="mb-12">
