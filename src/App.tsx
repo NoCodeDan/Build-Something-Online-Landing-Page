@@ -22,8 +22,8 @@ function App() {
       <Hero onJoinClick={() => setIsModalOpen(true)} />
       <SponsorsBanner />
       <Outcomes />
-      <Stats />
       <WhoItsFor />
+      <Stats />
       <WhatYoullLearn />
       <HowItWorks />
       <Curriculum />
