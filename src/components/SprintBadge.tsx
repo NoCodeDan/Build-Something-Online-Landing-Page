@@ -20,12 +20,9 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
     const screenshotBadge = document.createElement('div');
     screenshotBadge.style.position = 'absolute';
     screenshotBadge.style.left = '-9999px';
-    screenshotBadge.style.width = '500px';
+    screenshotBadge.style.width = '400px';
     screenshotBadge.style.padding = '0';
     screenshotBadge.style.margin = '0';
-    screenshotBadge.style.backgroundColor = '#FAFAF8';
-    screenshotBadge.style.borderRadius = '16px';
-    screenshotBadge.style.border = '2px solid rgba(219, 107, 63, 0.2)';
     screenshotBadge.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif';
     screenshotBadge.innerHTML = `
       <div style="
@@ -34,13 +31,12 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
         background: #FAFAF8;
         border-radius: 16px;
         overflow: hidden;
+        border: 2px solid rgba(219, 107, 63, 0.2);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
       ">
-        <!-- Ticket cut-outs -->
-        <div style="position: absolute; left: -16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: #FAFAF8; border: 2px solid rgba(219, 107, 63, 0.2);"></div>
-        <div style="position: absolute; right: -16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: #FAFAF8; border: 2px solid rgba(219, 107, 63, 0.2);"></div>
         
         <!-- Header -->
-        <div style="padding: 32px; text-align: center; background: linear-gradient(135deg, rgba(219, 107, 63, 0.1) 0%, rgba(200, 94, 55, 0.05) 100%);">
+        <div style="padding: 32px; text-align: center; background: linear-gradient(135deg, rgba(219, 107, 63, 0.1) 0%, rgba(219, 107, 63, 0.05) 50%, transparent 100%);">
           <div style="width: 60px; height: 60px; margin: 0 auto 16px; background: rgba(219, 107, 63, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C85E37" stroke-width="2">
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
@@ -52,12 +48,12 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
         </div>
         
         <!-- Content -->
-        <div style="padding: 32px;">
+        <div style="padding: 0 32px 32px 32px;">
           <!-- Dashed line -->
-          <div style="width: 100%; height: 2px; border-top: 2px dashed rgba(219, 107, 63, 0.3); margin-bottom: 24px;"></div>
+          <div style="width: 100%; height: 0; border-top: 2px dashed rgba(219, 107, 63, 0.3); margin-bottom: 24px;"></div>
           
           <!-- Participant info -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 24px;">
             <div>
               <p style="font-size: 11px; color: rgba(26, 26, 26, 0.6); text-transform: uppercase; font-weight: 500; margin: 0 0 4px 0;">Participant</p>
               <p style="font-size: 18px; font-weight: 600; color: #1A1A1A; margin: 0;">${name}</p>
@@ -77,7 +73,7 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
           <!-- Program info -->
           <div style="background: #F8F6F3; padding: 16px; border-radius: 8px; border: 1px solid #E8E3D8; margin-bottom: 24px;">
             <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="padding: 8px; background: rgba(219, 107, 63, 0.1); border-radius: 8px;">
+              <div style="padding: 8px; background: rgba(219, 107, 63, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C85E37" stroke-width="2">
                   <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
                 </svg>
@@ -90,11 +86,11 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
           </div>
           
           <!-- Dashed line -->
-          <div style="width: 100%; height: 2px; border-top: 2px dashed rgba(219, 107, 63, 0.3); margin-bottom: 16px;"></div>
+          <div style="width: 100%; height: 0; border-top: 2px dashed rgba(219, 107, 63, 0.3); margin-bottom: 16px;"></div>
           
           <!-- Barcode -->
-          <div style="text-align: center; padding: 16px 0;">
-            <svg width="250" height="70" viewBox="0 0 250 70" style="margin: 0 auto;">
+          <div style="display: flex; flex-direction: column; align-items: center; padding: 8px 0;">
+            <svg width="250" height="70" viewBox="0 0 250 70">
               ${(() => {
                 const hashCode = (s: string) => s.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a }, 0);
                 const seed = hashCode(barcodeValue);
@@ -111,7 +107,7 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
                 const totalWidth = bars.reduce((acc, bar) => acc + bar.width + spacing, 0) - spacing;
                 const startX = (250 - totalWidth) / 2;
                 let currentX = startX;
-                return bars.map((bar, index) => {
+                return bars.map((bar) => {
                   const x = currentX;
                   currentX += bar.width + spacing;
                   return `<rect x="${x}" y="10" width="${bar.width}" height="50" fill="#1A1A1A" />`;
@@ -121,6 +117,7 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
             <p style="font-size: 11px; color: rgba(26, 26, 26, 0.6); letter-spacing: 0.3em; margin: 8px 0 0 0; font-family: monospace;">${barcodeValue}</p>
           </div>
         </div>
+      </div>
     `;
     return screenshotBadge;
   };
@@ -138,13 +135,11 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
       // Use html2canvas to convert the badge to an image
       const html2canvas = (await import('html2canvas')).default;
       const canvas = await html2canvas(screenshotBadge.firstElementChild as HTMLElement, {
-        backgroundColor: null,
-        scale: 3,
+        backgroundColor: '#FAFAF8',
+        scale: 2,
         logging: false,
         useCORS: true,
         allowTaint: false,
-        width: 600,
-        height: 400,
       });
 
       // Convert canvas to blob and download
@@ -180,13 +175,11 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
       
       const html2canvas = (await import('html2canvas')).default;
       const canvas = await html2canvas(screenshotBadge.firstElementChild as HTMLElement, {
-        backgroundColor: null,
-        scale: 3,
+        backgroundColor: '#FAFAF8',
+        scale: 2,
         logging: false,
         useCORS: true,
         allowTaint: false,
-        width: 600,
-        height: 400,
       });
 
       canvas.toBlob(async (blob) => {
@@ -230,12 +223,12 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/60 backdrop-blur-md">
-      <div className="relative bg-warmWhite rounded-2xl shadow-2xl w-full max-w-2xl p-8 md:p-12">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-charcoal/60 backdrop-blur-md overflow-y-auto">
+      <div className="relative bg-warmWhite rounded-2xl shadow-2xl w-full max-w-md p-6 my-4 max-h-[calc(100vh-2rem)] overflow-y-auto">
         {onClose && (
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 text-charcoal/60 hover:text-charcoal transition-colors rounded-lg hover:bg-beige-100"
+            className="absolute top-4 right-4 p-2 text-charcoal/60 hover:text-charcoal transition-colors rounded-lg hover:bg-beige-100 z-10"
             aria-label="Close"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -244,20 +237,11 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
           </button>
         )}
 
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
-            Congratulations! 🎉
-          </h2>
-          <p className="text-lg text-charcoal/70">
-            We'll see you at the sprint!
-          </p>
-        </div>
-
         {/* Ticket Badge */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-6">
           <div
             ref={badgeRef}
-            className="relative transition-transform duration-300 ease-out"
+            className="relative transition-transform duration-300 ease-out w-full max-w-sm"
             onMouseMove={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
               const centerX = rect.left + rect.width / 2;
@@ -265,9 +249,8 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
               const relativeX = (mouseX - centerX) / (rect.width / 2); // -1 to 1
               
               // Calculate rotation based on mouse position
-              // Left side: rotate left (negative Y), right side: rotate right (positive Y)
-              const rotateY = relativeX * 8; // Max 8 degrees rotation for ticket
-              const rotateX = -Math.abs(relativeX) * 3; // Slight tilt
+              const rotateY = relativeX * 8;
+              const rotateX = -Math.abs(relativeX) * 3;
               const scale = 1.02;
               
               e.currentTarget.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(${scale})`;
@@ -287,32 +270,32 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
         </div>
 
         {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <button
             onClick={downloadBadge}
             disabled={isDownloading}
-            className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-warmOrange-500 to-warmOrange-600 text-white rounded-lg font-medium hover:from-warmOrange-600 hover:to-warmOrange-700 shadow-md hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-warmOrange-500 to-warmOrange-600 text-white rounded-lg font-medium hover:from-warmOrange-600 hover:to-warmOrange-700 shadow-md hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
           >
-            <Download className="w-5 h-5" />
+            <Download className="w-4 h-4" />
             <span>{isDownloading ? 'Downloading...' : 'Download Badge'}</span>
           </button>
           
           <button
             onClick={shareBadge}
-            className="flex items-center justify-center gap-2 px-6 py-3 bg-beige-100 text-charcoal rounded-lg font-medium hover:bg-beige-200 border border-beige-200 transition-all duration-200"
+            className="flex items-center justify-center gap-2 px-5 py-2.5 bg-beige-100 text-charcoal rounded-lg font-medium hover:bg-beige-200 border border-beige-200 transition-all duration-200 text-sm"
           >
-            <Share2 className="w-5 h-5" />
+            <Share2 className="w-4 h-4" />
             <span>Share</span>
           </button>
         </div>
 
         {shareUrl && (
-          <p className="text-center mt-4 text-sm text-warmOrange-600">
+          <p className="text-center mt-3 text-sm text-warmOrange-600">
             {shareUrl}
           </p>
         )}
 
-        <p className="text-center mt-6 text-sm text-charcoal/60">
+        <p className="text-center mt-4 text-xs text-charcoal/60">
           Share your badge to let others know you're joining the sprint!
         </p>
       </div>

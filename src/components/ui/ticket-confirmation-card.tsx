@@ -179,10 +179,6 @@ const AnimatedTicket = React.forwardRef<HTMLDivElement, TicketProps>(
           )}
           {...props}
         >
-          {/* Ticket cut-out effect */}
-          <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-warmWhite border-2 border-warmOrange-400/20" />
-          <div className="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-warmWhite border-2 border-warmOrange-400/20" />
-
           <div className="p-8 flex flex-col items-center text-center bg-gradient-to-br from-warmOrange-500/10 via-warmOrange-500/5 to-transparent rounded-t-2xl">
               <div className="p-3 bg-warmOrange-500/20 rounded-full animate-in zoom-in-50 delay-300 duration-500">
                   {icon || <CheckCircleIcon className="w-10 h-10 text-warmOrange-600 animate-in zoom-in-75 delay-500 duration-500" />}
