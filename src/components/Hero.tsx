@@ -57,8 +57,6 @@ export const Hero = ({ onJoinClick }: HeroProps) => {
           <span className="font-medium">Hands-on</span>
           <span className="text-warmOrange-500">•</span>
           <span className="font-medium">Practical</span>
-          <span className="text-warmOrange-500">•</span>
-          <span className="font-medium">No fluff</span>
         </div>
       </div>
     </section>
