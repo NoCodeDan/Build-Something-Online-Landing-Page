@@ -229,7 +229,7 @@ export const SprintBadge = ({ name, participantNumber, onClose }: SprintBadgePro
     }
   };
 
-  const shareText = `I just signed up for the Build Something Online Sprint! 🚀 Join me:`;
+  const shareText = `I just signed up for the Build Something Online Sprint! 🚀 Join me: #BuildSomethingOnline`;
   const siteUrl = window.location.href;
 
   // Helper to generate image blob
