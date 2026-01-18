@@ -62,45 +62,45 @@ const curriculum: CurriculumPhase[] = [
     title: 'Phase 1',
     description: 'AI Foundations & Real-World Use',
     days: [
-      { day: 1, title: 'AI Chatbots', description: 'ChatGPT / Claude / Gemini / Perplexity', status: 'Upcoming' },
+      { day: 1, title: 'AI Chatbots', description: 'Master the fundamentals of ChatGPT, Claude, Gemini, and Perplexity. Learn when to use each tool, how to write effective prompts, and leverage their unique strengths for different tasks.', status: 'Upcoming' },
       { day: 2, title: 'Real Life Use Cases', description: 'Finances, goal setting & planning, fixing appliances, understanding food labels, diet alignment, and everyday decision-making', status: 'Upcoming' },
-      { day: 3, title: 'Chatbots Advanced Features', description: 'Branching, projects, desktop apps, and persistent workflows', status: 'Upcoming' },
-      { day: 4, title: 'NotebookLM', description: 'Synthesize research, generate slide decks, and turn information into insight', status: 'Upcoming' },
-      { day: 5, title: 'Lovable / Replit / Bolt.new / v.0', description: 'Intro to AI-powered app and product building', status: 'Upcoming' }
+      { day: 3, title: 'Chatbots Advanced Features', description: 'Unlock advanced capabilities: branching conversations, project management, desktop app integrations, and building persistent workflows that remember context across sessions.', status: 'Upcoming' },
+      { day: 4, title: 'NotebookLM', description: 'Transform research into actionable insights. Learn to synthesize documents, generate comprehensive slide decks, and extract key information from large datasets using AI-powered analysis.', status: 'Upcoming' },
+      { day: 5, title: 'Lovable / Replit / Bolt.new / v.0', description: 'Get hands-on with AI-powered development platforms. Build your first app using Lovable, Replit, Bolt.new, and v.0. Learn the fundamentals of AI-assisted product creation.', status: 'Upcoming' }
     ]
   },
   {
     title: 'Phase 2',
     description: 'Vibe Coding',
     days: [
-      { day: 6, title: 'Creating Your First Landing Page', status: 'Upcoming' },
-      { day: 7, title: 'Speeding Up Your Workflow', description: 'Raycast, Stream Deck, dictation tools (WisprFlow, Monologue, SuperWhisper, etc.)', status: 'Upcoming' },
-      { day: 8, title: 'Cursor / Antigravity', description: 'AI-assisted coding and development workflows', status: 'Upcoming' },
-      { day: 9, title: 'Backend Databases', description: 'Supabase, Firebase, Convex', status: 'Upcoming' },
-      { day: 10, title: 'Claude Code', description: 'Codex / Gemini CLI and codebase-level AI', status: 'Upcoming' },
-      { day: 11, title: 'Planning & Multi-Agent Workflows', status: 'Upcoming' },
-      { day: 12, title: 'Building a Design System for Your Project', status: 'Upcoming' },
-      { day: 13, title: 'Generating a Business Dashboard', status: 'Upcoming' },
-      { day: 14, title: 'Agentic Development', status: 'Upcoming' },
-      { day: 15, title: 'API Services', description: 'How to hook them up + best tools (AI tools, Firecrawl, Google services, transcription, Whisper, OCR, etc.)', status: 'Upcoming' },
-      { day: 16, title: 'Putting AI In Your Product', description: 'Using models from ChatGPT, Claude, and Google Gemini for advanced capabilities', status: 'Upcoming' },
-      { day: 17, title: 'Building Your First SaaS Product', status: 'Upcoming' }
+      { day: 6, title: 'Creating Your First Landing Page', description: 'Build a professional landing page using AI tools. Learn layout, copywriting, and design principles to create something that converts.', status: 'Upcoming' },
+      { day: 7, title: 'Speeding Up Your Workflow', description: 'Accelerate your productivity with workflow automation tools. Master Raycast for quick actions, Stream Deck for shortcuts, and dictation tools like WisprFlow, Monologue, and SuperWhisper for hands-free operation.', status: 'Upcoming' },
+      { day: 8, title: 'Cursor / Antigravity', description: 'Transform your coding workflow with AI-powered editors. Learn to use Cursor and Antigravity for intelligent code completion, refactoring, debugging, and building features faster than ever.', status: 'Upcoming' },
+      { day: 9, title: 'Backend Databases', description: 'Set up and manage backend infrastructure with modern database platforms. Learn to use Supabase, Firebase, and Convex for authentication, real-time data, and serverless functions.', status: 'Upcoming' },
+      { day: 10, title: 'Claude Code', description: 'Work with codebase-level AI assistants. Master Claude Code, Codex, and Gemini CLI to understand entire codebases, generate complex features, and maintain large-scale projects with AI assistance.', status: 'Upcoming' },
+      { day: 11, title: 'Planning & Multi-Agent Workflows', description: 'Coordinate multiple AI agents to work together on complex projects. Learn orchestration patterns and workflow design.', status: 'Upcoming' },
+      { day: 12, title: 'Building a Design System for Your Project', description: 'Create consistent, scalable design systems using AI. Establish color palettes, typography, components, and style guidelines.', status: 'Upcoming' },
+      { day: 13, title: 'Generating a Business Dashboard', description: 'Build data visualization dashboards with charts, metrics, and real-time updates. Connect to APIs and display business intelligence.', status: 'Upcoming' },
+      { day: 14, title: 'Agentic Development', description: 'Build AI agents that can plan, execute, and iterate on development tasks autonomously. Learn agent architecture and tool integration.', status: 'Upcoming' },
+      { day: 15, title: 'API Services', description: 'Integrate powerful APIs into your projects. Learn to connect AI tools, Firecrawl for web scraping, Google services, transcription APIs, Whisper for audio, OCR for text extraction, and more to extend your app capabilities.', status: 'Upcoming' },
+      { day: 16, title: 'Putting AI In Your Product', description: 'Embed AI capabilities directly into your applications. Integrate models from ChatGPT, Claude, and Google Gemini to add intelligent features like natural language processing, content generation, and smart recommendations.', status: 'Upcoming' },
+      { day: 17, title: 'Building Your First SaaS Product', description: 'Combine everything you\'ve learned to build a complete SaaS application. User authentication, database, payments, and deployment.', status: 'Upcoming' }
     ]
   },
   {
     title: 'Phase 3',
     description: 'Distribution & Automation',
     days: [
-      { day: 18, title: 'Creating Graphic Assets with AI', description: 'Midjourney, ChatGPT, Google Gemini / Nano Banana (Possibles: Ideogram, Recraft)', status: 'Upcoming' },
-      { day: 19, title: 'Using Google Stitch to Create Screen Mockups', description: 'Before building in AI', status: 'Upcoming' },
-      { day: 20, title: 'Creating Video Assets', description: 'Google Gemini / Flow', status: 'Upcoming' },
-      { day: 21, title: 'Creating Audio Assets', description: 'ElevenLabs, Suno, Udio', status: 'Upcoming' },
-      { day: 22, title: 'Creating a Commercial / Music Video / Short Film', description: 'Scripting, storyboarding, pre-viz, image & video generation, editing', status: 'Upcoming' },
-      { day: 23, title: 'Cloning Yourself & Creating AI UGC', description: 'Using HeyGen', status: 'Upcoming' },
-      { day: 24, title: 'Build an Ad Campaign Featuring Yourself', status: 'Upcoming' },
-      { day: 25, title: 'AI Native Browsers', description: 'Atlas, Comet, Dia', status: 'Upcoming' },
-      { day: 26, title: 'Automation Services', description: 'Zapier, Make, n8n', status: 'Upcoming' },
-      { day: 27, title: 'Build an Agent / Agent-Native App', status: 'Upcoming' }
+      { day: 18, title: 'Creating Graphic Assets with AI', description: 'Generate professional graphics, illustrations, and visual content using AI tools. Master Midjourney, ChatGPT, Google Gemini, Nano Banana, Ideogram, and Recraft to create stunning visuals for any project.', status: 'Upcoming' },
+      { day: 19, title: 'Using Google Stitch to Create Screen Mockups', description: 'Prototype and visualize your ideas before building. Use Google Stitch to create realistic screen mockups, test layouts, and iterate on designs quickly before committing to development.', status: 'Upcoming' },
+      { day: 20, title: 'Creating Video Assets', description: 'Produce professional video content with AI. Learn to use Google Gemini and Flow to generate video clips, create animations, and produce engaging visual content for marketing and storytelling.', status: 'Upcoming' },
+      { day: 21, title: 'Creating Audio Assets', description: 'Generate high-quality audio content with AI voice and music tools. Master ElevenLabs for voice synthesis, Suno and Udio for music creation, and learn to produce professional audio for your projects.', status: 'Upcoming' },
+      { day: 22, title: 'Creating a Commercial / Music Video / Short Film', description: 'Produce complete video projects from concept to final cut. Learn the full pipeline: scripting with AI, storyboarding, pre-visualization, image and video generation, and professional editing workflows.', status: 'Upcoming' },
+      { day: 23, title: 'Cloning Yourself & Creating AI UGC', description: 'Create AI-generated content featuring yourself. Learn to use HeyGen to clone your voice and appearance, generate personalized UGC at scale, and produce authentic-looking content for marketing and social media.', status: 'Upcoming' },
+      { day: 24, title: 'Build an Ad Campaign Featuring Yourself', description: 'Create personalized ad campaigns using AI-generated content featuring yourself. Learn targeting, creative optimization, and campaign structure.', status: 'Upcoming' },
+      { day: 25, title: 'AI Native Browsers', description: 'Explore the next generation of web browsing with AI-native browsers. Learn to use Atlas, Comet, and Dia for intelligent web interaction, automated research, and AI-powered browsing experiences.', status: 'Upcoming' },
+      { day: 26, title: 'Automation Services', description: 'Automate workflows and connect services without coding. Master Zapier, Make, and n8n to build complex automations, integrate tools, and create systems that work for you 24/7.', status: 'Upcoming' },
+      { day: 27, title: 'Build an Agent / Agent-Native App', description: 'Create applications built from the ground up for AI agents. Design for autonomous operation and multi-step task completion.', status: 'Upcoming' }
     ]
   },
   {
@@ -110,6 +110,7 @@ const curriculum: CurriculumPhase[] = [
       { 
         day: 28, 
         title: 'Create a Streetwear Brand', 
+        description: 'Put it all together: design a clothing line, create mockups, build a pitch deck, produce a lookbook with AI photography, film a commercial, and launch a website. This is your capstone project showcasing everything you\'ve learned.',
         subtopics: [
           'Clothing line designs',
           'Clothing mockups',

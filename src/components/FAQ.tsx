@@ -19,6 +19,10 @@ const faqs = [
     answer: 'The workshop is self-paced with daily lessons delivered via video and email. You can complete the exercises on your own schedule, though we recommend following the 28-day structure for best results.'
   },
   {
+    question: 'What if I fall behind?',
+    answer: 'Falling behind is okay. All lessons are available on demand, and the program is designed to fit around real life. Focus on progress, not perfection.'
+  },
+  {
     question: 'What will I have at the end?',
     answer: 'You\'ll have a live landing page, a working AI agent or workflow, a product prototype, and an AI-first system you can reuse. Plus the skills and confidence to keep building.'
   },

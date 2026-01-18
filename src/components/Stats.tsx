@@ -41,7 +41,7 @@ const data = [
 ];
 
 const stats = [
-  { value: "500+", label: "Builders Enrolled" },
+  { value: "20+", label: "Tools Introduced" },
   { value: "28", label: "Days of Content" },
   { value: "6", label: "Real Projects Built" },
   { value: "100%", label: "AI-First Approach" },
