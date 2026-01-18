@@ -192,20 +192,21 @@ export const Curriculum = () => {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="p-4 md:p-6">
-                        <div className="overflow-x-auto">
+                      <div className="p-2 md:p-6">
+                        <div className="overflow-x-auto max-h-[600px] md:max-h-none overflow-y-auto">
                           <table className="w-full text-sm text-left">
                             {/* Table Header */}
                             <motion.thead
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               transition={{ duration: 0.3 }}
+                              className="sticky top-0 bg-warmWhite z-10"
                             >
                               <tr className="border-b border-beige-200">
-                                <th scope="col" className="p-4 font-semibold text-charcoal/60 w-16">Day</th>
-                                <th scope="col" className="p-4 font-semibold text-charcoal/60">Topic</th>
-                                <th scope="col" className="p-4 font-semibold text-charcoal/60 hidden md:table-cell">Details</th>
-                                <th scope="col" className="p-4 font-semibold text-charcoal/60 text-right">Status</th>
+                                <th scope="col" className="p-2 md:p-4 font-semibold text-charcoal/60 w-12 md:w-16">Day</th>
+                                <th scope="col" className="p-2 md:p-4 font-semibold text-charcoal/60">Topic</th>
+                                <th scope="col" className="p-2 md:p-4 font-semibold text-charcoal/60 hidden md:table-cell">Details</th>
+                                <th scope="col" className="p-2 md:p-4 font-semibold text-charcoal/60 text-right">Status</th>
                               </tr>
                             </motion.thead>
 
@@ -221,16 +222,16 @@ export const Curriculum = () => {
                                   variants={itemVariants}
                                   className="border-b border-beige-100 last:border-none hover:bg-beige-50/50 transition-colors"
                                 >
-                                  <td className="p-4">
-                                    <div className="w-10 h-10 bg-gradient-to-br from-warmOrange-400 to-warmOrange-600 rounded-lg flex items-center justify-center shadow-sm">
-                                      <span className="text-white font-bold text-sm">{day.day}</span>
+                                  <td className="p-2 md:p-4 align-top">
+                                    <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-warmOrange-400 to-warmOrange-600 rounded-lg flex items-center justify-center shadow-sm">
+                                      <span className="text-white font-bold text-xs md:text-sm">{day.day}</span>
                                     </div>
                                   </td>
-                                  <td className="p-4">
-                                    <span className="font-semibold text-charcoal">{day.title}</span>
+                                  <td className="p-2 md:p-4 align-top">
+                                    <span className="font-semibold text-charcoal text-sm md:text-base">{day.title}</span>
                                     {/* Show description on mobile under title */}
                                     {day.description && (
-                                      <p className="text-charcoal/60 text-xs mt-1 md:hidden">{day.description}</p>
+                                      <p className="text-charcoal/60 text-xs mt-1 md:hidden leading-relaxed">{day.description}</p>
                                     )}
                                     {day.subtopics && (
                                       <ul className="mt-1 md:hidden space-y-0.5">
@@ -243,12 +244,12 @@ export const Curriculum = () => {
                                       </ul>
                                     )}
                                   </td>
-                                  <td className="p-4 text-charcoal/60 hidden md:table-cell">
-                                    {day.description && <span>{day.description}</span>}
+                                  <td className="p-2 md:p-4 text-charcoal/60 hidden md:table-cell align-top">
+                                    {day.description && <span className="text-sm leading-relaxed">{day.description}</span>}
                                     {day.subtopics && (
-                                      <ul className="space-y-0.5">
+                                      <ul className="space-y-0.5 mt-1">
                                         {day.subtopics.map((subtopic, idx) => (
-                                          <li key={idx} className="flex items-start gap-1">
+                                          <li key={idx} className="flex items-start gap-1 text-sm">
                                             <span className="text-warmOrange-500">•</span>
                                             <span>{subtopic}</span>
                                           </li>
@@ -256,7 +257,7 @@ export const Curriculum = () => {
                                       </ul>
                                     )}
                                   </td>
-                                  <td className="p-4 text-right">
+                                  <td className="p-2 md:p-4 text-right align-top">
                                     <StatusBadge status={day.status} />
                                   </td>
                                 </motion.tr>
